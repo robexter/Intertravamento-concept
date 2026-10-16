@@ -1,0 +1,366 @@
+[
+  {
+    "id": "Q01",
+    "q": "Na 39GR0051, qual entrada está no bloco de TRIP TOTAL?",
+    "opts": [
+      "FSLL-39003",
+      "TSL-39010",
+      "FSLL-39005",
+      "FALL-39044BX"
+    ],
+    "a": 0,
+    "ex": "A baixa vazão de ar FSLL-003 está posicionada no bloco de trip total.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q02",
+    "q": "A linha HX-127 “CARGA TOTAL” pertence a qual bloco?",
+    "opts": [
+      "Trip total",
+      "Trip parcial",
+      "Primeiro evento",
+      "Falha de sinal"
+    ],
+    "a": 1,
+    "ex": "A classificação decorre da posição na matriz, e não do nome da linha.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q03",
+    "q": "Qual instrumento corresponde ao diferencial da L-3901?",
+    "opts": [
+      "PDSLL-39022",
+      "PDSLL-39018",
+      "PSHH-39046",
+      "FSLL-39003"
+    ],
+    "a": 1,
+    "ex": "A matriz identifica PDSLL-018 na linha L-3901.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q04",
+    "q": "Qual instrumento corresponde ao diferencial da L-3902?",
+    "opts": [
+      "PDSLL-39018",
+      "PDSLL-39022",
+      "PSHH-39046",
+      "FSLL-39003"
+    ],
+    "a": 1,
+    "ex": "A matriz identifica PDSLL-022 na linha L-3902.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q05",
+    "q": "Na matriz do conversor, XSJ3901 identifica qual origem?",
+    "opts": [
+      "Trip do J-3902",
+      "Trip do J-3901",
+      "Trip da GV-3901",
+      "Trip do TG-3901"
+    ],
+    "a": 1,
+    "ex": "O sinal de trip do soprador J-3901 está identificado como XSJ3901.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q06",
+    "q": "Qual ajuste é exibido junto à TSHH-032 na 39GR0051?",
+    "opts": [
+      "720 °C",
+      "740 °C",
+      "760 °C",
+      "780 °C"
+    ],
+    "a": 2,
+    "ex": "A matriz exibe 760 junto à alta temperatura da fase densa; não valida a revisão vigente.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q07",
+    "q": "A linha de baixa carga inferior/superior está em qual bloco?",
+    "opts": [
+      "Trip parcial",
+      "Trip total",
+      "Primeiro evento",
+      "Falha geral"
+    ],
+    "a": 0,
+    "ex": "A linha FSLL-005/006 aparece no grupo de trip parcial.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q08",
+    "q": "Qual tela conecta diretamente causas e saídas do conversor?",
+    "opts": [
+      "39GW0014",
+      "39GR0051",
+      "39GR0068",
+      "39GR0009"
+    ],
+    "a": 1,
+    "ex": "A 39GR0051 é a matriz de causa e efeito; as outras têm funções distintas.",
+    "src": "39GR0051"
+  },
+  {
+    "id": "Q09",
+    "q": "Qual valor de trip de carga é mostrado na 39GW0014?",
+    "opts": [
+      "1259 m³/d",
+      "1637 m³/d",
+      "3000 m³/d",
+      "3500 m³/d"
+    ],
+    "a": 0,
+    "ex": "Para os dois ramais, a tela mostra 1259 m³/d por 120 segundos.",
+    "src": "39GW0014"
+  },
+  {
+    "id": "Q10",
+    "q": "Qual valor aparece no campo de rearme de carga na GW0014?",
+    "opts": [
+      "1259 m³/d",
+      "1637 m³/d",
+      "3000 m³/d",
+      "3500 m³/d"
+    ],
+    "a": 2,
+    "ex": "Os dois quadros de carga exibem FI > 3000 m³/d e tempo > 30 s.",
+    "src": "39GW0014"
+  },
+  {
+    "id": "Q11",
+    "q": "Qual limiar de trip é exibido para vapor de dispersão?",
+    "opts": [
+      "50 t/d",
+      "75 t/d",
+      "125 t/d",
+      "550 t/d"
+    ],
+    "a": 1,
+    "ex": "A 39GW0014 registra 75 t/d por mais de 300 segundos no campo de trip.",
+    "src": "39GW0014"
+  },
+  {
+    "id": "Q12",
+    "q": "Segundo o descritivo histórico, qual condição bloqueia o by-pass de partida?",
+    "opts": [
+      "Instrumento em BAD",
+      "Controle em MAN",
+      "Alarme reconhecido",
+      "Controlador em CAS"
+    ],
+    "a": 0,
+    "ex": "O documento histórico explicita a restrição por instrumento em falha BAD.",
+    "src": "Documento histórico, p.11"
+  },
+  {
+    "id": "Q13",
+    "q": "O documento cita 1637 e a GW0014 indica 3000 m³/d. O que comparar primeiro?",
+    "opts": [
+      "Função e revisão",
+      "Escala e unidade",
+      "Malha e instrumento",
+      "Tendência e alarme"
+    ],
+    "a": 0,
+    "ex": "Os números são associados a funções diferentes de reset e rearme; verificar revisão.",
+    "src": "Documento histórico + 39GW0014"
+  },
+  {
+    "id": "Q14",
+    "q": "Entre 500, 1259 m³/d e 5%, qual leitura é tecnicamente sustentada?",
+    "opts": [
+      "Mesma base comprovada",
+      "Critérios a verificar",
+      "Conversão já definida",
+      "Revisão já confirmada"
+    ],
+    "a": 1,
+    "ex": "As descrições de parada divergem e a base do percentual não foi definida.",
+    "src": "Documento histórico, pp.14–20"
+  },
+  {
+    "id": "Q15",
+    "q": "Na votação didática 2oo3, quantos canais atendem a condição?",
+    "opts": [
+      "Um canal em três",
+      "Dois canais em três",
+      "Um canal em dois",
+      "Três canais em três"
+    ],
+    "a": 1,
+    "ex": "O modelo 2oo3 resulta verdadeiro com dois ou três canais em condição.",
+    "src": "39GR0060 (2 × 3)"
+  },
+  {
+    "id": "Q16",
+    "q": "Qual linha da 39GR0060 associa três saídas da matriz?",
+    "opts": [
+      "PSHH-243 (A/B/C)",
+      "PSHH-256 (A/B/C)",
+      "PSHH-262 (A/B/C)",
+      "XA-152 (energia)"
+    ],
+    "a": 2,
+    "ex": "A linha PSHH-262 da E-3910 tem vínculo com três saídas exibidas.",
+    "src": "39GR0060"
+  },
+  {
+    "id": "Q17",
+    "q": "Qual válvula se vincula à pressão alta da E-3908?",
+    "opts": [
+      "XV-201",
+      "XV-203",
+      "XV-206",
+      "XV-204"
+    ],
+    "a": 0,
+    "ex": "A linha PSHH-243A/B/C vincula-se à XV-201 na matriz do fracionamento.",
+    "src": "39GR0060"
+  },
+  {
+    "id": "Q18",
+    "q": "Qual entrada do fracionamento se relaciona às cinco saídas?",
+    "opts": [
+      "PSHH-243 (A/B/C)",
+      "PSHH-256 (A/B/C)",
+      "PSHH-262 (A/B/C)",
+      "XA-152 (energia)"
+    ],
+    "a": 3,
+    "ex": "A linha XA-152 traz marcações nas cinco saídas representadas.",
+    "src": "39GR0060"
+  },
+  {
+    "id": "Q19",
+    "q": "Qual controlador representa antissurge do primeiro estágio?",
+    "opts": [
+      "FIC-39182",
+      "FIC-39184",
+      "PIC-39211",
+      "LIC-39170"
+    ],
+    "a": 0,
+    "ex": "No painel CCC, FIC-39182 corresponde ao antissurge do 1º estágio.",
+    "src": "39GW0010"
+  },
+  {
+    "id": "Q20",
+    "q": "Qual controlador representa antissurge do segundo estágio?",
+    "opts": [
+      "PIC-39211",
+      "FIC-39182",
+      "FIC-39184",
+      "LIC-39170"
+    ],
+    "a": 2,
+    "ex": "No painel CCC, FIC-39184 corresponde ao antissurge do 2º estágio.",
+    "src": "39GW0010"
+  },
+  {
+    "id": "Q21",
+    "q": "O indicador TRANFAIL, isoladamente, comprova qual condição?",
+    "opts": [
+      "Diagnóstico pendente",
+      "Parada já confirmada",
+      "Fluxo reverso ativo",
+      "Surge trip registrado"
+    ],
+    "a": 0,
+    "ex": "A captura não explicita causa, efeito ou significado técnico dessa indicação.",
+    "src": "39GW0010"
+  },
+  {
+    "id": "Q22",
+    "q": "Qual ocorrência consta na coluna J-3902 do primeiro evento?",
+    "opts": [
+      "Três surges consecutivos",
+      "Três trips de lubrificação",
+      "Dois sensores axiais",
+      "Duas falhas de purga"
+    ],
+    "a": 0,
+    "ex": "A 39GR0068 lista “3 SURGES CONSECUTIVOS” entre os eventos de J-3902.",
+    "src": "39GR0068"
+  },
+  {
+    "id": "Q23",
+    "q": "Em que interface o documento situa a automação dos potes?",
+    "opts": [
+      "SDCD recebendo PLC",
+      "CCC recebendo PLC",
+      "J-3902 recebendo CCC",
+      "J-3901 recebendo CCC"
+    ],
+    "a": 0,
+    "ex": "A automação dos potes é descrita no SDCD, iniciada por sinal do PLC.",
+    "src": "Documento histórico, p.7"
+  },
+  {
+    "id": "Q24",
+    "q": "Na captura GW0039, qual par aparece destacado?",
+    "opts": [
+      "Manual e caldeira",
+      "Manual e chaminé",
+      "Automático e caldeira",
+      "Automático e chaminé"
+    ],
+    "a": 0,
+    "ex": "A captura mostra seleção manual e destino caldeira destacados.",
+    "src": "39GW0039"
+  },
+  {
+    "id": "Q25",
+    "q": "A matriz 39GR0057 recebe qual causa do conversor?",
+    "opts": [
+      "Trip parcial ou total",
+      "Perda de vazão do CCC",
+      "Trip antissurge 1º",
+      "Pressão da E-3908"
+    ],
+    "a": 0,
+    "ex": "A matriz dos potes inclui trip parcial ou total do conversor.",
+    "src": "39GR0057"
+  },
+  {
+    "id": "Q26",
+    "q": "A tela 39GR0068 permite concluir qual aspecto por si só?",
+    "opts": [
+      "Ordem completa dos trips",
+      "Relação de eventos",
+      "Horários de cada evento",
+      "Cronologia do conversor"
+    ],
+    "a": 1,
+    "ex": "A captura exibe a lista de eventos, não um histórico cronológico com carimbos de tempo.",
+    "src": "39GR0068"
+  },
+  {
+    "id": "Q27",
+    "q": "Qual par apresenta, nessa ordem, disparo e retorno da função?",
+    "opts": [
+      "Trip e rearme",
+      "Rearme e trip",
+      "Trip e by-pass",
+      "By-pass e rearme"
+    ],
+    "a": 0,
+    "ex": "Trip é condição de disparo; rearme se relaciona ao retorno de uma função.",
+    "src": "Documento histórico + 39GW0014"
+  },
+  {
+    "id": "Q28",
+    "q": "Qual par aparece como funções de controle CCC na GW0010?",
+    "opts": [
+      "Performance e antissurge",
+      "Vibração e deslocamento axial",
+      "Primeiro evento e trip",
+      "Combustão e ignição dos gases"
+    ],
+    "a": 0,
+    "ex": "A 39GW0010 diferencia performance e antissurge; o trip deve ser estudado à parte.",
+    "src": "39GW0010 + 39GR0068"
+  }
+]

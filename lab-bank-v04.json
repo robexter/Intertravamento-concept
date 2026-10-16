@@ -1,0 +1,287 @@
+[
+  {
+    "name": "Conversor — leitura da matriz",
+    "tag": "39GR0051",
+    "context": "Identifique a faixa de trip, sem transformar as marcações da imagem em cronologia real.",
+    "steps": [
+      {
+        "q": "A FSLL-003 aparece em qual faixa da matriz?",
+        "o": [
+          "No bloco de trip total",
+          "No bloco de trip parcial",
+          "No painel de primeiro evento"
+        ],
+        "a": 0,
+        "why": "Está na parte identificada como trip total."
+      },
+      {
+        "q": "Como a linha HX-127 deve ser classificada?",
+        "o": [
+          "Pela posição no bloco parcial",
+          "Pelo nome “carga total” da linha",
+          "Pelo número de saídas marcadas"
+        ],
+        "a": 0,
+        "why": "A legenda de classificação decorre da faixa da matriz."
+      },
+      {
+        "q": "Que tag se relaciona à L-3901 no conversor?",
+        "o": [
+          "PDSLL-39022",
+          "PDSLL-39018",
+          "PDSLL-39003"
+        ],
+        "a": 1,
+        "why": "A linha L-3901 corresponde a PDSLL-018."
+      },
+      {
+        "q": "O que uma marcação verde na matriz demonstra?",
+        "o": [
+          "Que há vínculo no diagrama",
+          "Que o efeito ocorreu às 14h",
+          "Que o PLC resetou a saída"
+        ],
+        "a": 0,
+        "why": "A matriz representa associação, não prova de execução real."
+      },
+      {
+        "q": "Como reconhecer um possível primeiro evento real?",
+        "o": [
+          "Consultar registro temporal próprio",
+          "Inferir pela posição da linha na matriz",
+          "Assumir a variável mais crítica"
+        ],
+        "a": 0,
+        "why": "A matriz estática não contém sequência temporal."
+      }
+    ]
+  },
+  {
+    "name": "Partida e parada — semântica",
+    "tag": "39GW0014 + documento histórico",
+    "context": "Diferencie critérios históricos de by-pass e campos de trip e rearme.",
+    "steps": [
+      {
+        "q": "O valor 1637 m³/d aparece em qual contexto?",
+        "o": [
+          "Rearme visual da GW0014",
+          "Normalização no texto histórico",
+          "Condição de trip ativo na GW0014"
+        ],
+        "a": 1,
+        "why": "O descritivo antigo menciona 1637 como reset de by-pass."
+      },
+      {
+        "q": "O valor 3000 m³/d aparece em qual contexto?",
+        "o": [
+          "Rearme indicado na GW0014",
+          "Trip da carga na GW0014",
+          "Contorno da parada no texto"
+        ],
+        "a": 0,
+        "why": "A tela mostra 3000 no campo rearme de carga."
+      },
+      {
+        "q": "Se um instrumento está em BAD, o texto histórico prevê:",
+        "o": [
+          "By-pass de partida não aceito",
+          "By-pass de parada concluído",
+          "Reset geral do conversor executado"
+        ],
+        "a": 0,
+        "why": "O texto descreve restrição ao by-pass de partida."
+      },
+      {
+        "q": "O número “5%” na sequência pode ser igualado a 500 m³/d?",
+        "o": [
+          "Sim, se a vazão cair",
+          "Não, sem base de cálculo",
+          "Sim, se o trip for parcial"
+        ],
+        "a": 1,
+        "why": "A correspondência depende da base de escala ausente na fonte."
+      },
+      {
+        "q": "Como tratar divergências de revisões documentais?",
+        "o": [
+          "Registrar cada função e validar",
+          "Preferir o valor numericamente maior",
+          "Adotar a transição mais frequente"
+        ],
+        "a": 0,
+        "why": "A opção tecnicamente sustentada é reconhecer a lacuna."
+      }
+    ]
+  },
+  {
+    "name": "Fracionamento — votação 2oo3",
+    "tag": "39GR0060",
+    "context": "Interprete as relações da matriz, com lógica 2oo3 apenas ilustrativa.",
+    "steps": [
+      {
+        "q": "Com um canal alto no 2oo3, o resultado lógico é:",
+        "o": [
+          "Votação ainda não satisfeita",
+          "Votação já satisfeita no 2oo3",
+          "Trip com tempo já confirmado"
+        ],
+        "a": 0,
+        "why": "Um canal não atende à condição 2 de 3."
+      },
+      {
+        "q": "Com dois canais altos no 2oo3, o resultado é:",
+        "o": [
+          "Votação lógica satisfeita",
+          "Votação lógica bloqueada",
+          "Trip de conversor concluído"
+        ],
+        "a": 0,
+        "why": "Dois canais satisfazem o modelo lógico de votação."
+      },
+      {
+        "q": "A alta pressão E-3910 se associa a quantas saídas?",
+        "o": [
+          "Duas saídas na matriz",
+          "Três saídas na matriz",
+          "Cinco saídas na matriz"
+        ],
+        "a": 1,
+        "why": "A linha PSHH-262 se relaciona às colunas XV-207, XV-206 e XV-204."
+      },
+      {
+        "q": "Qual causa está ligada às cinco colunas de saída?",
+        "o": [
+          "XA-152, falta de energia",
+          "PSHH-243, alta na E-3908",
+          "PSHH-256, alta E-3909"
+        ],
+        "a": 0,
+        "why": "A matriz sinaliza XA-152 em cinco saídas."
+      },
+      {
+        "q": "A XV-201 está vinculada a qual proteção?",
+        "o": [
+          "Alta pressão na E-3910",
+          "Alta pressão na E-3908",
+          "Alta pressão na E-3909"
+        ],
+        "a": 1,
+        "why": "A XV-201 aparece vinculada a PSHH-243A/B/C da E-3908."
+      }
+    ]
+  },
+  {
+    "name": "J-3902 — diagnóstico e controle",
+    "tag": "39GW0010 + 39GR0068",
+    "context": "Separe comportamento do CCC de evidências de intertravamento da máquina.",
+    "steps": [
+      {
+        "q": "Qual instrumento corresponde ao antissurge 1º estágio?",
+        "o": [
+          "FIC-39182 do primeiro estágio",
+          "FIC-39184 do segundo estágio CCC",
+          "PIC-39211 da performance"
+        ],
+        "a": 0,
+        "why": "Na GW0010, FIC-39182 identifica o antissurge do primeiro estágio."
+      },
+      {
+        "q": "Qual instrumento corresponde ao antissurge 2º estágio?",
+        "o": [
+          "PIC-39211 da performance do CCC",
+          "FIC-39182 do antissurge estágio 1",
+          "FIC-39184 do antissurge estágio 2"
+        ],
+        "a": 2,
+        "why": "Na GW0010, FIC-39184 identifica o antissurge do segundo estágio."
+      },
+      {
+        "q": "A palavra TRANFAIL, na captura, permite afirmar:",
+        "o": [
+          "Trip da máquina registrado",
+          "Significado funcional não definido",
+          "Surge do compressor CCC em andamento"
+        ],
+        "a": 1,
+        "why": "A imagem não fornece a descrição técnica do código TRANFAIL."
+      },
+      {
+        "q": "Qual ocorrência é listada no primeiro evento do J-3902?",
+        "o": [
+          "Três surges consecutivos",
+          "Três trips de lubrificação",
+          "Três alarmes de descarga"
+        ],
+        "a": 0,
+        "why": "A 39GR0068 lista três surges consecutivos."
+      },
+      {
+        "q": "Uma imagem de primeiro evento sem timestamp permite:",
+        "o": [
+          "Inferir a sequência apenas da imagem",
+          "Comparar a lista com dados temporais",
+          "Examinar os eventos listados na tela"
+        ],
+        "a": 2,
+        "why": "Os registros visíveis são a lista da interface, sem cronologia da ocorrência."
+      }
+    ]
+  },
+  {
+    "name": "GV-3901 — potes de selagem",
+    "tag": "39GR0057 + 39GW0039 + documento",
+    "context": "Analise sinais e destinos sem inferir a posição atual das válvulas.",
+    "steps": [
+      {
+        "q": "O PLC envia sinal de trip para qual função citada?",
+        "o": [
+          "Automação dos potes no SDCD",
+          "Controlador do antissurge CCC",
+          "Sinal direto da carga do riser"
+        ],
+        "a": 0,
+        "why": "O documento atribui ao SDCD a automação de mudança dos potes."
+      },
+      {
+        "q": "Qual seleção aparece marcada na GW0039?",
+        "o": [
+          "Automático com caldeira",
+          "Manual com caldeira",
+          "Manual com chaminé"
+        ],
+        "a": 1,
+        "why": "Os destaques mostram modo manual e caldeira."
+      },
+      {
+        "q": "Qual causa existe na matriz dos potes?",
+        "o": [
+          "Trip parcial ou total conversor",
+          "Pressão alta nas E-3908 e E-3909",
+          "Trip do CCC antissurge 2º"
+        ],
+        "a": 0,
+        "why": "A 39GR0057 inclui trip parcial ou total do conversor."
+      },
+      {
+        "q": "A condição atual dos potes pode ser deduzida da foto?",
+        "o": [
+          "Sim, porque a foto tem cores",
+          "Não, pois é captura pontual",
+          "Sim, porque mostra a seleção"
+        ],
+        "a": 1,
+        "why": "A imagem histórica não garante condição atual."
+      },
+      {
+        "q": "Que evidência confirma as permissões em vigor?",
+        "o": [
+          "Lógica atual aprovada e testes",
+          "Cores da captura fotografada",
+          "Histórico sem data de cada evento"
+        ],
+        "a": 0,
+        "why": "A confirmação exige documentação e validação atuais."
+      }
+    ]
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "C01",
+    "area": "Conversor",
+    "q": "A matriz mostra FSLL-39005/39006 em trip parcial e FSLL-39003 em trip total. O que distingue os dois?",
+    "opts": [
+      "O tipo do circuito de vazão",
+      "A seção ocupada na matriz",
+      "A origem do sinal no SDCD",
+      "O método de leitura do tag"
+    ],
+    "a": 1,
+    "ex": "A classificação decorre da faixa de trip parcial/total da matriz 39GR0051.",
+    "src": "39GR0051",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "C02",
+    "area": "Conversor",
+    "q": "Na linha HX-127, o texto “CARGA TOTAL” deve ser interpretado como:",
+    "opts": [
+      "Nome da condição na linha",
+      "Confirmação de trip total",
+      "Resultado de votação 2oo3",
+      "Sinal de reset de máquina"
+    ],
+    "a": 0,
+    "ex": "“CARGA TOTAL” é o rótulo, mas a linha está na região de TRIP PARCIAL.",
+    "src": "39GR0051",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "C03",
+    "area": "Conversor",
+    "q": "Em uma análise dos diferenciais da L-3901 e da L-3902, qual correspondência é mostrada?",
+    "opts": [
+      "L-3901: 018; L-3902: 022",
+      "L-3901: 022; L-3902: 018",
+      "L-3901: 003; L-3902: 022",
+      "L-3901: 018; L-3902: 046"
+    ],
+    "a": 0,
+    "ex": "PDSLL-39018 identifica a linha do catalisador gasto e PDSLL-39022 a do regenerado.",
+    "src": "39GR0051 + documento histórico",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "C04",
+    "area": "Conversor",
+    "q": "Qual par reúne duas causas mostradas dentro do bloco de trip total do conversor?",
+    "opts": [
+      "FSLL-003 e PDSLL-018",
+      "FSLL-005 e TSL-39010",
+      "FALL-044BX e HX-127",
+      "TSHH-032 e FSLL-006"
+    ],
+    "a": 0,
+    "ex": "FSLL-003 e PDSLL-018 constam no bloco TRIP TOTAL da 39GR0051.",
+    "src": "39GR0051",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "C05",
+    "area": "Conversor",
+    "q": "O tag XSJ3901 identificado na matriz do conversor deve ser correlacionado inicialmente com:",
+    "opts": [
+      "A matriz da máquina J-3901",
+      "A malha de antissurge J-3902",
+      "A proteção da E-3908",
+      "O controle de fluxo dos potes"
+    ],
+    "a": 0,
+    "ex": "XSJ3901 identifica o trip do soprador J-3901; a causa de máquina requer sua própria matriz.",
+    "src": "39GR0051 + 39GR0052",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "C06",
+    "area": "Conversor",
+    "q": "Para rastrear as saídas ligadas à temperatura baixa de reação, qual tela é a referência direta?",
+    "opts": [
+      "Matriz de conversor 39GR0051",
+      "Tela de primeiro evento 39GR0068",
+      "Painel CCC da 39GW0010",
+      "Potes de selagem 39GW0039"
+    ],
+    "a": 0,
+    "ex": "A 39GR0051 possui a linha TSL-39010 e as colunas de efeitos.",
+    "src": "39GR0051",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P01",
+    "area": "Partida e parada",
+    "q": "Ao comparar 1637 m³/d no texto de 2005 e 3000 m³/d na GW0014, o que pode ser afirmado?",
+    "opts": [
+      "Tratam campos com funções distintas",
+      "Representam mesmo trip já comprovado",
+      "Confirmam erro na programação PLC",
+      "Definem equivalência por escala"
+    ],
+    "a": 0,
+    "ex": "O primeiro aparece ligado à normalização histórica de by-pass, e 3000 ao campo visual de rearme de carga.",
+    "src": "Documento histórico pp. 12–13 + 39GW0014",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P02",
+    "area": "Partida e parada",
+    "q": "Qual associação entre valor e função está visível na tela GW0014 para vazão de carga?",
+    "opts": [
+      "Trip 1259; rearme acima 3000",
+      "Trip 3000; rearme acima 1259",
+      "Trip 1637; rearme acima 3000",
+      "Trip 1259; rearme acima 1637"
+    ],
+    "a": 0,
+    "ex": "GW0014 mostra 1259 m³/d (120 s) para trip e FI>3000 m³/d (30 s) no bloco de rearme.",
+    "src": "39GW0014",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P03",
+    "area": "Partida e parada",
+    "q": "No descritivo histórico, qual condição de instrumento restringe a aceitação do by-pass de partida?",
+    "opts": [
+      "Instrumento em falha BAD",
+      "Instrumento em escala alta",
+      "Controlador em modo manual",
+      "Variável próxima ao setpoint"
+    ],
+    "a": 0,
+    "ex": "A página 11 informa que falha BAD impede aceitação do by-pass de partida, requerendo tratamento pela manutenção.",
+    "src": "Documento histórico p. 11",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P04",
+    "area": "Partida e parada",
+    "q": "O valor 5% apresentado na sequência histórica de parada pode ser convertido diretamente em 500 m³/d?",
+    "opts": [
+      "Falta a base do percentual",
+      "Há equivalência já declarada",
+      "Depende só do temporizador",
+      "Equivale ao valor de rearme"
+    ],
+    "a": 0,
+    "ex": "A base de cálculo do percentual não é definida nos excertos; não há conversão demonstrada.",
+    "src": "Documento histórico pp. 14–18",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P05",
+    "area": "Partida e parada",
+    "q": "Na GW0014, o trip do vapor de dispersão exibe qual combinação de vazão e duração?",
+    "opts": [
+      "Abaixo de 75 t/d por 300 s",
+      "Abaixo de 75 t/d por 120 s",
+      "Abaixo de 50 t/d por 300 s",
+      "Abaixo de 50 t/d por 120 s"
+    ],
+    "a": 0,
+    "ex": "Na GW0014 há referência a vazão abaixo de 75 t/d e tempo superior a 300 segundos.",
+    "src": "39GW0014",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P06",
+    "area": "Partida e parada",
+    "q": "No caso de TSL-39010, o texto histórico de normalização associa temperatura a:",
+    "opts": [
+      "Vazão de carga ou de reciclo",
+      "Pressão da E-3908 e votação",
+      "Rota dos gases para caldeira",
+      "Antissurge dos dois estágios"
+    ],
+    "a": 0,
+    "ex": "O documento menciona temperatura maior que 525 °C com condições de carga ou borra de reciclo; a precedência E/OU requer validação.",
+    "src": "Documento histórico pp. 12–13",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "P07",
+    "area": "Partida e parada",
+    "q": "Ao identificar “TRIP DESABILITADO” para LSLL-39005 em GW0014, qual registro é necessário?",
+    "opts": [
+      "Estado exibido e data da captura",
+      "Inexistência definitiva do sensor",
+      "Exclusão da matriz do processo",
+      "Mudança garantida do setpoint"
+    ],
+    "a": 0,
+    "ex": "A legenda comprova somente o estado indicado na captura, não sua vigência atual.",
+    "src": "39GW0014",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E01",
+    "area": "Causa e efeito",
+    "q": "Na matriz 39GR0060, a alta pressão da E-3910 (PSHH-262) vincula-se a:",
+    "opts": [
+      "Três saídas da fracionadora",
+      "Uma saída da fracionadora",
+      "Cinco saídas da fracionadora",
+      "Nenhuma saída representada"
+    ],
+    "a": 0,
+    "ex": "A linha PSHH-262 mostra três marcações verdes nas colunas de efeitos.",
+    "src": "39GR0060",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E02",
+    "area": "Causa e efeito",
+    "q": "Qual causa da matriz 39GR0060 possui marcação nas cinco saídas representadas?",
+    "opts": [
+      "Falta de energia XA-152",
+      "Pressão alta PSHH-243A/B/C",
+      "Alta pressão PSHH-256A",
+      "Alta pressão PSHH-262"
+    ],
+    "a": 0,
+    "ex": "A linha XA-152 apresenta marcação em todas as cinco colunas representadas.",
+    "src": "39GR0060",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E03",
+    "area": "Causa e efeito",
+    "q": "O símbolo 2 × 3 ao lado de PSHH-243A/B/C é compatível didaticamente com:",
+    "opts": [
+      "Dois de três canais em condição",
+      "Um de três canais em condição",
+      "Um de dois canais em condição",
+      "Três de quatro canais em condição"
+    ],
+    "a": 0,
+    "ex": "2oo3 exige dois ou três dos três sinais em condição; votação real exige lógica validada.",
+    "src": "39GR0060",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E04",
+    "area": "Causa e efeito",
+    "q": "Ao selecionar PSHH-256A/B/C na matriz de fracionamento, qual efeito fica marcado?",
+    "opts": [
+      "Fechar XV-203 para C-3922",
+      "Fechar XV-201 para C-3920",
+      "Abrir XV-204 para C-3917",
+      "Fechar XV-207 para C-3925"
+    ],
+    "a": 0,
+    "ex": "A linha PSHH-256A/B/C apresenta um ponto na coluna XV-203.",
+    "src": "39GR0060",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E05",
+    "area": "Causa e efeito",
+    "q": "Qual é o significado de um ponto verde numa interseção da matriz de causa e efeito?",
+    "opts": [
+      "Vínculo indicado entre causa e saída",
+      "Registro de atuação com timestamp",
+      "Prova de válvula fechada naquele dia",
+      "Sinal de permissivo já satisfeito"
+    ],
+    "a": 0,
+    "ex": "A matriz representa o vínculo; não permite estabelecer cronologia ou atuação física em um caso real.",
+    "src": "39GR0051 + 39GR0060",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "E06",
+    "area": "Causa e efeito",
+    "q": "A matriz dos potes 39GR0057 associa trip parcial/total do conversor a:",
+    "opts": [
+      "Comandos de transferência indicados",
+      "Malhas CCC de controle antissurge",
+      "Partida local do soprador J-3901",
+      "Rearme individual de carga superior"
+    ],
+    "a": 0,
+    "ex": "A 39GR0057 mostra as saídas HS-028 e HS-029 relacionadas à transferência entre caminhos dos gases.",
+    "src": "39GR0057",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "M01",
+    "area": "Máquinas",
+    "q": "Na GW0010, qual par identifica os controladores antissurge do J-3902 por estágio?",
+    "opts": [
+      "FIC-39182 e FIC-39184",
+      "FIC-39184 e PIC-39211",
+      "PIC-39211 e LIC-39170",
+      "LIC-39170 e FIC-39182"
+    ],
+    "a": 0,
+    "ex": "FIC-39182 e FIC-39184 aparecem como antissurge do 1º e 2º estágio.",
+    "src": "39GW0010",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "M02",
+    "area": "Máquinas",
+    "q": "Qual é a função do PIC-39211 na GW0010, distinta dos FICs antissurge?",
+    "opts": [
+      "Controle de performance da máquina",
+      "Controle do vapor de dispersão do riser",
+      "Registro da primeira falha do PLC",
+      "Votação da pressão da E-3910"
+    ],
+    "a": 0,
+    "ex": "A tela CCC apresenta PIC-39211 no painel PERFORMANCE.",
+    "src": "39GW0010",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "M03",
+    "area": "Máquinas",
+    "q": "A tela 39GR0068 inclui qual registro na coluna associada ao J-3902?",
+    "opts": [
+      "Três surges consecutivos",
+      "Três falhas de instrumento",
+      "Dois trips de velocidade",
+      "Dois sinais de purga inválida"
+    ],
+    "a": 0,
+    "ex": "A 39GR0068 inclui “3 SURGES CONSECUTIVOS” nos eventos do J-3902.",
+    "src": "39GR0068",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "M04",
+    "area": "Máquinas",
+    "q": "Qual combinação permite estudar a origem de um evento do J-3901 e seu reflexo no conversor?",
+    "opts": [
+      "39GR0052 junto à 39GR0051",
+      "39GR0060 junto à 39GW0010",
+      "39GW0039 junto à 39GR0011",
+      "39GR0057 junto à 39GR0030"
+    ],
+    "a": 0,
+    "ex": "A 39GR0052 trata do soprador; a 39GR0051 inclui a entrada XSJ3901 do conversor.",
+    "src": "39GR0051 + 39GR0052",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "M05",
+    "area": "Máquinas",
+    "q": "Um indicador TRANFAIL aparece no painel CCC da captura. Qual é o próximo documento que falta para interpretá-lo?",
+    "opts": [
+      "Descrição de diagnóstico do CCC",
+      "Matriz de pressão da E-3908 (SIS)",
+      "Malha de nível do Cat-Cooler C-01A",
+      "Mapa das XVs da fracionadora U-39"
+    ],
+    "a": 0,
+    "ex": "A captura por si só não define o significado detalhado e efeitos de TRANFAIL.",
+    "src": "39GW0010",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "D01",
+    "area": "Diagnóstico",
+    "q": "Ao investigar um trip real, qual informação a matriz estática não oferece isoladamente?",
+    "opts": [
+      "Ordem temporal dos eventos",
+      "Correspondência causa–saída",
+      "Identificação dos elementos finais",
+      "Seção de trip parcial ou total"
+    ],
+    "a": 0,
+    "ex": "Sem histórico com carimbo temporal, a imagem não prova qual sinal chegou primeiro.",
+    "src": "39GR0051 + 39GR0068",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "D02",
+    "area": "Diagnóstico",
+    "q": "Para conferir como o trip do conversor afeta a transferência dos gases, quais telas se complementam?",
+    "opts": [
+      "39GR0057 e 39GR0031",
+      "39GW0010 e 39GR0060",
+      "39GR0053 e 39GR0016",
+      "39GR0008 e 39GW0004"
+    ],
+    "a": 0,
+    "ex": "A matriz dos potes e a tela de processo mostram, respectivamente, vínculos e caminhos dos gases.",
+    "src": "39GR0057 + 39GR0031",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "D03",
+    "area": "Diagnóstico",
+    "q": "Uma redução hipotética do ar do regenerador pode alterar diretamente qual aspecto físico?",
+    "opts": [
+      "Combustão do coque no catalisador",
+      "Votação dos sensores da E-3908",
+      "Relação antissurge do segundo estágio",
+      "Nível de selagem em C-3917A/B"
+    ],
+    "a": 0,
+    "ex": "A disponibilidade de ar participa do processo de regeneração e do balanço térmico; a magnitude não é inferida da imagem.",
+    "src": "39GR0009 + fundamento físico",
+    "difficulty": "Análise"
+  },
+  {
+    "id": "D04",
+    "area": "Diagnóstico",
+    "q": "Durante a análise de baixa vazão de carga, qual consequência física é coerente sem quantificar efeitos?",
+    "opts": [
+      "Alteração do contato óleo–catalisador",
+      "Mudança garantida de pressão da E-3908",
+      "Trip confirmado do compressor J-3902",
+      "Retorno obrigatório de gás à chaminé"
+    ],
+    "a": 0,
+    "ex": "A relação óleo/catalisador e o balanço do riser podem variar; os efeitos exatos dependem da operação.",
+    "src": "39GR0008 + fundamento físico",
+    "difficulty": "Análise"
+  }
+]

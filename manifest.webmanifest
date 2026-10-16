@@ -1,0 +1,22 @@
+{
+  "name": "Intertravamentos U-39 Concept — Protótipo Educacional",
+  "short_name": "U39 Concept",
+  "description": "Treinamento didático de intertravamentos do RFCC U-39. Não controla processo.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#0a273d",
+  "background_color": "#071725",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
