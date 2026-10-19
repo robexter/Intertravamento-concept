@@ -77,6 +77,21 @@ Esses estados são diferentes. A análise operacional exige consultar a função
 
 ### Primeiro evento, BAD e reset
 
+
+### Primeiro evento — explicação detalhada de como a documentação descreve a retirada da indicação
+
+**Antes de qualquer reset**, o CIC deve identificar e preservar o primeiro evento, hora, tag e eventos posteriores, relacionando-os à matriz de causa e efeito e às tendências. O documento é histórico; as referências abaixo **não constituem instrução de manobra em campo**.
+
+| Conjunto | Referência de limpeza da indicação de primeiro evento | O que não se deve confundir |
+|---|---|---|
+| Conversor U-39 | O descritivo associa a limpeza da indicação de primeiro evento ao by-pass de partida HSBP-39001 no SDCD. | O comando depende de condições de aceitação, inclusive estado de trip do J-3901 quando o conversor está em trip e BAD. Não elimina causa física nem rearma todas as válvulas. |
+| J-3901 / J-3902 | O documento relaciona o primeiro evento das grandes máquinas aos botões de reset dos painéis locais. | Reset local da indicação e rearme da proteção/máquina são conceitos diferentes; dependem dos procedimentos dedicados. |
+| TG-3901 | O descritivo menciona abertura da XV-39024 no contexto da retirada do primeiro evento. | Referência histórica a validar, não autorização de abertura da válvula nem prova de restabelecimento operacional. |
+
+**Cinco momentos do diagnóstico educacional:** (1) identificar evento e preservar registros; (2) investigar causa e efeitos; (3) distinguir alarme reconhecido, memória de primeiro evento, trip de proteção e elemento final; (4) consultar o mecanismo documental do equipamento com requisitos vigentes e autorização; (5) verificar, após eventual recuperação autorizada, os estados da proteção e dos equipamentos.
+
+**Separação essencial:** reconhecer um alarme no SDCD ≠ limpar indicação memorizada de primeiro evento ≠ reset de trip ≠ rearme dos elementos finais ≠ partida. O novo painel interativo permite selecionar Conversor, J-3901, J-3902 e TG-3901 e percorrer esse fluxo sem executar comandos reais.
+
 O documento descreve registro de primeiro evento pelo PLC; os demais eventos posteriores também podem ser exibidos. Para apagar a indicação de primeiro evento do conversor, menciona-se o by-pass de partida; nas grandes máquinas existem resets locais específicos. Isso **não** significa que apagar registro identifique ou corrija a causa física.
 
 Com o conversor em trip, o histórico relaciona o reset das válvulas ao by-pass de partida, menciona FV-39001A/B associadas às blow-off/antissurge do J-3901 e cita comportamentos próprios de XV-39001, XV-39808 e XV-39002. A condição de pressão citada para reset automático da XV-39002 é menor que 0,150 kg/cm²; todos esses critérios exigem validação no arranjo vigente.
