@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; object-src &#x27;none&#x27;; frame-src &#x27;none&#x27;; form-action &#x27;none&#x27;; connect-src &#x27;none&#x27;; img-src &#x27;none&#x27;; font-src &#x27;none&#x27;; style-src &#x27;sha256-NgeG5Mi8whp7zZe3YUO0sfex2h7ZoSBYwz6ALXiXaVw=&#x27;; script-src &#x27;sha256-RhKN80FUOOQupitm0XR6BTHUP0hmHAIskOfcaLWPvO4=&#x27;">
+<meta name="referrer" content="no-referrer">
+<title>Intertravamento Concept — By-passes Avançados | V0.4.3</title>
+<style id="app-estilo">*{box-sizing:border-box}
+:root{color-scheme:dark;--bg:#081927;--panel:#112c3b;--card:#142f3d;--border:#335669;--fg:#edf5f7;--sub:#bed3dd;--accent:#75e1cc;--warn:#ffdaa0;--muted:#90b0bc}
+body{margin:0;background:var(--bg);font:16px/1.65 system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--fg)}
+a{color:var(--accent)}.container{width:min(1120px,calc(100% - 32px));margin:auto}
+header{background:linear-gradient(135deg,#164459,#0a2331);border-bottom:1px solid var(--border);padding:28px 0}
+header h1{font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.2;margin:5px 0 8px}header p{color:var(--sub);margin:0}
+.kicker{font-weight:800;letter-spacing:.06em;color:var(--accent);font-size:.82rem;text-transform:uppercase}
+.notice{border:1px solid #9b7c46;background:#352e25;padding:15px 18px;border-radius:12px;margin:20px 0;color:#ffedcf}
+nav{position:sticky;top:0;z-index:4;background:#0a202e;border-bottom:1px solid var(--border)}nav .tabs{display:flex;gap:8px;padding:10px 0;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;max-width:100%}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffe29a;outline-offset:3px}
+.tab,.btn,.mode,.choice{border:1px solid #567e8b;border-radius:10px;background:#154055;color:white;padding:10px 15px;font-weight:650}
+.tab[aria-selected=true],.mode.active{background:#19675d;border-color:#86eed9;color:white}
+section[hidden],div[hidden],p[hidden],button[hidden]{display:none!important}
+main{padding:14px 0 40px}.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:clamp(16px,3vw,28px);margin:16px 0;overflow-wrap:anywhere}
+.panel h2{line-height:1.35;margin-top:0}.panel h3{line-height:1.35;color:#b8f9e7}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:12px}.grid .card{margin:0}
+.small{font-size:.9rem;color:var(--sub)}.subtle{color:var(--sub)}.warn{color:var(--warn)}
+.flow{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.flow button{flex:1 1 155px;text-align:left;min-height:76px;background:#153849;color:var(--fg);border:1px solid #537485;border-radius:10px;padding:10px}
+.flow button[aria-pressed=true]{background:#17695b;border-color:var(--accent)}.flow button strong,.flow button small{display:block}.flow button small{color:var(--sub)}
+.btn:hover:not(:disabled),.choice:hover:not(:disabled),.tab:hover{background:#226a77}
+.btn:disabled,.choice:disabled{opacity:.62;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}.row .btn{min-height:44px}
+.choice{display:block;width:100%;margin:9px 0;padding:13px;text-align:left;font-weight:500;line-height:1.55}
+.choice.selected{border:2px solid #f8d68a;background:#255e65}
+.feedback{border:1px solid #659e8b;background:#153e3b;border-radius:12px;padding:16px;margin:16px 0}.feedback.bad{border-color:#bc8673;background:#42302c}
+progress{width:100%;height:14px;accent-color:var(--accent)}.review{border-left:3px solid var(--accent);padding:12px 16px;background:#0b2835;border-radius:5px;margin:12px 0}
+.prose{overflow-wrap:anywhere}.prose h2{margin-top:34px;color:#c0f2e5}.prose h3{margin-top:25px;color:#bee4e8}.prose blockquote{border-left:3px solid var(--accent);padding-left:18px}.prose li{margin:5px 0}
+.table-scroll{overflow-x:auto;max-width:100%;margin:12px 0;border:1px solid var(--border);border-radius:10px}
+table{width:100%;min-width:650px;border-collapse:collapse;font-size:.92rem}td,th{padding:10px;border:1px solid var(--border);text-align:left;vertical-align:top}th{background:#183d4d}
+hr{border:0;border-top:1px solid var(--border);margin:20px 0}
+footer{border-top:1px solid var(--border);padding:20px 0 40px;color:var(--sub)}
+@media(max-width:600px){.container{width:min(100% - 20px,1120px)}nav{position:static}.tab{flex:1 1 45%;font-size:.88rem}.panel{padding:15px}.flow button{flex:1 1 45%}body{font-size:15px}}
+</style></head>
+<body><header><div class="container"><div class="kicker">U-39 • Concept | Módulo complementar 0.4.3</div>
+<h1>By-pass de partida, parada e manutenção</h1>
+<p>Fluxos de interpretação • conteúdo integral • treinamento CIC com 20 decisões</p></div></header>
+<nav aria-label="Navegação principal"><div class="container tabs" role="tablist">
+<button type="button" class="tab" data-tab="inicio" aria-selected="true">Visão geral</button>
+<button type="button" class="tab" data-tab="fluxos" aria-selected="false">Fluxos interativos</button>
+<button type="button" class="tab" data-tab="conteudo" aria-selected="false">Conteúdo integral</button>
+<button type="button" class="tab" data-tab="cic" aria-selected="false">Simulações CIC</button>
+</div></nav>
+<main class="container">
+<div class="notice"><strong>Protótipo exclusivamente educacional.</strong> Não representa a programação validada do PLC. Não envia comandos ao SDCD, não habilita intertravamentos e não substitui procedimentos vigentes. Dados históricos e divergências estão identificados no conteúdo integral.</div>
+<section data-panel="inicio"><div class="panel"><h2>Os três tipos de by-pass</h2><div class="grid">
+<div class="card"><h3>Partida</h3><p>Contorno seletivo de funções elegíveis em trip, com retorno individual da proteção após normalização.</p><p class="small">Comando geral ≠ contorno permanente.</p></div>
+<div class="card"><h3>Parada</h3><p>Contornos liberados conforme as condições da sequência, enquanto outras proteções podem permanecer ativas.</p><p class="small">Comando aceito ≠ todas as funções contornadas.</p></div>
+<div class="card"><h3>Manutenção</h3><p>Intervenção autorizada em canal ou função, com avaliação da votação e restabelecimento formal.</p><p class="small">Sinal normalizado ≠ contorno retirado.</p></div>
+</div><p>Use as abas superiores para explorar as etapas, consultar o texto integral ou resolver os cinco cenários de avaliação CIC.</p></div>
+<div class="panel"><h2>Estados que não devem ser confundidos</h2>
+<div class="grid"><div class="card">Comando recebido</div><div class="card">Comando aceito</div><div class="card">Função contornada</div><div class="card">Função protegida</div><div class="card">Trip</div><div class="card">Reset / rearme</div></div>
+<p class="small">A confirmação dos estados deve ser individual, conforme lógica e instrumentação validadas.</p></div></section>
+<section data-panel="fluxos" hidden><div class="panel"><h2>Sequências lógicas — simulação conceitual</h2>
+<p class="subtle">Clique nos tipos de by-pass e em cada etapa. A sequência é pedagógica, não deve ser utilizada para manobras reais.</p>
+<div class="row"><button type="button" class="mode active" data-flow="partida">Partida</button><button type="button" class="mode" data-flow="parada">Parada</button><button type="button" class="mode" data-flow="manutencao">Manutenção</button></div>
+<div class="flow" id="fluxo-etapas"></div><div class="card" id="fluxo-detalhe" aria-live="polite"></div>
+</div></section>
+<section data-panel="conteudo" hidden><div class="panel prose" id="conteudo-tecnico"><h1>Intertravamento U-39 — By-pass de partida, parada e manutenção</h1>
+<h2>Conteúdo técnico integral e cinco cenários de avaliação CIC</h2>
+<p><strong>Protótipo exclusivamente educacional.</strong> Não representa a configuração validada do PLC e não substitui os procedimentos vigentes.</p>
+<p>Este arquivo é uma reprodução integral, em formato de leitura, dos capítulos técnicos e das 20 decisões que constam do módulo interativo. A ordem de alternativas aqui é a ordem de cadastro; no aplicativo ela é embaralhada a cada tentativa.</p>
+<h2>1. Filosofia dos três tipos de by-pass</h2>
+<p><strong>By-pass</strong>, no contexto deste módulo, significa contorno temporário de uma função instrumentada segundo lógica e autorização definidas. Não se confunde com válvula física de desvio, reset de trip, rearme de elemento final ou reconhecimento de alarme.</p>
+<p>O objetivo comum dos contornos de partida, parada e manutenção é administrar condições transitórias específicas. A diferença reside na <strong>forma de habilitação, sequência de atuação, permanência, retorno à proteção e risco residual</strong>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Característica</th>
+  <th>Partida</th>
+  <th>Parada</th>
+  <th>Manutenção</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Acionamento</td>
+  <td>HSBP-39001 no SDCD</td>
+  <td>HSBP39STOP no SDCD; outra seção histórica usa HS_PARADA</td>
+  <td>Liberação autorizada da manutenção no PLC, com chave física descrita</td>
+</tr>
+<tr>
+  <td>Finalidade</td>
+  <td>Permitir a partida apesar de condições de processo ainda não normalizadas</td>
+  <td>Permitir a redução prevista de carga, temperatura, circulação e ar sem trips decorrentes da sequência esperada</td>
+  <td>Permitir intervenção em canal ou instrumento da proteção</td>
+</tr>
+<tr>
+  <td>Seleção dos contornos</td>
+  <td>Somente condições elegíveis e em trip no momento de aceitação, conforme documento</td>
+  <td>Liberação sequencial, vinculada às condições das etapas</td>
+  <td>Contorno individual, condicionado a autorização</td>
+</tr>
+<tr>
+  <td>Retirada</td>
+  <td>Individual e automática, segundo critérios por função</td>
+  <td>Condições de reset e/ou transição para partida previstas no descritivo</td>
+  <td>Restabelecimento formal após manutenção</td>
+</tr>
+<tr>
+  <td>Questão crítica CIC</td>
+  <td>Qual proteção já retornou?</td>
+  <td>Qual proteção ainda não foi liberada?</td>
+  <td>Qual capacidade de proteção continua disponível?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Na partida, o comando geral não significa contorno permanente de tudo; na parada, o comando aceito não significa que todas as funções estejam contornadas; na manutenção, a medição normalizada não comprova que o desvio tenha sido retirado.</p>
+<p><strong>Segurança de processo:</strong> nenhum desses recursos representa autorização de ignorar um intertravamento real. O Concept é exclusivamente educacional, não envia comandos ao SDCD nem ao PLC e não estabelece uma sequência operacional para execução em planta.</p>
+<h3>Estados que o CIC deve distinguir</h3>
+<ol>
+<li><strong>Comando recebido:</strong> a chave recebeu a solicitação do operador.</li>
+<li><strong>Comando aceito:</strong> permissivos pertinentes foram avaliados.</li>
+<li><strong>Função contornada:</strong> o estado específico daquela função indica by-pass efetivo.</li>
+<li><strong>Função protegida:</strong> o canal participa novamente da lógica de intertravamento.</li>
+<li><strong>Função em trip:</strong> as condições programadas solicitaram uma ação de segurança.</li>
+<li><strong>Reset/rearme:</strong> há requisitos próprios de processo, instrumentação e elementos finais.</li>
+</ol>
+<p>Esses estados são diferentes. A análise operacional exige consultar a função específica na tela, não apenas o botão geral de partida ou parada.</p>
+<hr />
+<h2>2. By-pass de partida — HSBP-39001</h2>
+<p><strong>Objetivo:</strong> permitir a partida do conversor quando determinadas variáveis de processo ainda não atingiram suas condições normais. O projeto histórico descreve contorno seletivo apenas das funções elegíveis que estejam em trip quando o comando for aceito.</p>
+<h3>Sequência lógica descrita</h3>
+<ol>
+<li>O operador solicita a partida pela HSBP-39001 no SDCD.</li>
+<li>O PLC verifica permissivos e impedimentos; com conversor em trip, o histórico informa que o J-3901 não deve possuir trip ativo para permitir o by-pass de partida e reset do conversor.</li>
+<li>A qualidade dos instrumentos é avaliada. O histórico declara que a presença de instrumento em BAD impede a aceitação do comando; sinal BAD pode gerar trip quando assim configurado.</li>
+<li>As funções elegíveis que estiverem em trip são contornadas; o SDCD sinaliza &quot;processo de partida&quot; e informa quais funções estão contornadas.</li>
+<li>À medida que cada variável satisfaz seu critério de normalização, o by-pass correspondente é retirado <strong>individualmente</strong>.</li>
+<li>O retorno da proteção não prova, isoladamente, que todos os demais contornos tenham sido retirados. O rearme dos elementos finais possui requisitos próprios.</li>
+</ol>
+<h3>Funções previstas para contorno de partida (documento histórico)</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Tag</th>
+  <th>Função</th>
+  <th>Condição citada para contorno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>FSLL-39005B</td>
+  <td>Baixa vazão de carga no ramal inferior</td>
+  <td>Abaixo de 1.259 m³/d por mais de 120 s e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>FSLL-39006B</td>
+  <td>Baixa vazão de carga no ramal superior</td>
+  <td>Abaixo de 1.259 m³/d por mais de 120 s e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>TSL-39010B</td>
+  <td>Baixa temperatura de reação</td>
+  <td>Abaixo de 500 °C e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>FSLL-39003B</td>
+  <td>Baixa vazão de ar do conversor</td>
+  <td>Abaixo de 1.350 m³/d e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>PDSLL-39018</td>
+  <td>Baixo ΔP catalisador gasto (L-3901)</td>
+  <td>Conversor em trip total e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>PDSLL-39022</td>
+  <td>Baixo ΔP catalisador regenerado (L-3902)</td>
+  <td>Conversor em trip total e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>FSLL-39044B</td>
+  <td>Baixa vazão de vapor de dispersão</td>
+  <td>Abaixo de 550 t/d por mais de 300 s e comando HSBP-39001</td>
+</tr>
+<tr>
+  <td>LSLL-39005</td>
+  <td>Baixo nível de catalisador no regenerador</td>
+  <td>Abaixo de 40% e comando HSBP-39001</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Condições históricas de reset individual do by-pass de partida</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Função</th>
+  <th>Condição registrada no descritivo</th>
+  <th>Observação crítica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>FSLL-39005B</td>
+  <td>Ramal inferior acima de 1.637 m³/d por mais de 30 s</td>
+  <td>Valor para reset de by-pass histórico; não confundir com rearme da tela 39GW0014.</td>
+</tr>
+<tr>
+  <td>FSLL-39006B</td>
+  <td>Texto imprime &quot;abaixo de 1.637 m³/d&quot; por mais de 30 s</td>
+  <td>Divergência/suspeita de erro documental: NÃO corrigir por suposição.</td>
+</tr>
+<tr>
+  <td>TSL-39010B</td>
+  <td>Critérios envolvendo carga de um dos ramais ou borra de reciclo e T reação acima de 525 °C</td>
+  <td>Conferir precedência E/OU no PLC e revisão; o documento apresenta conjunções e alternativas cuja tradução operacional precisa ser validada.</td>
+</tr>
+<tr>
+  <td>FSLL-39003B</td>
+  <td>Critérios envolvendo fotocélulas do forninho e vazão de ar acima de 3.500 m³/d, ou fase densa acima de 400 °C e vazão acima de 3.500 m³/d</td>
+  <td>As duas situações dependem de condições específicas do forninho/temperatura.</td>
+</tr>
+<tr>
+  <td>PDSLL-39018 / 39022</td>
+  <td>Condições de vazão de carga/borra e ΔP acima de 200 gf/cm² por mais de 30 s</td>
+  <td>A precedência exata dos operadores lógicos precisa da carta validada.</td>
+</tr>
+<tr>
+  <td>FSLL-39044B</td>
+  <td>Vapor de dispersão acima de 50 t/d por mais de 30 s</td>
+  <td>Não corresponde automaticamente à condição de rearme na 39GW0014.</td>
+</tr>
+<tr>
+  <td>LSLL-39005</td>
+  <td>Nível acima de 50% por mais de 30 s</td>
+  <td>Estado de habilitação indicado em captura do SDCD exige validação atual.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Primeiro evento, BAD e reset</h3>
+<p>O documento descreve registro de primeiro evento pelo PLC; os demais eventos posteriores também podem ser exibidos. Para apagar a indicação de primeiro evento do conversor, menciona-se o by-pass de partida; nas grandes máquinas existem resets locais específicos. Isso <strong>não</strong> significa que apagar registro identifique ou corrija a causa física.</p>
+<p>Com o conversor em trip, o histórico relaciona o reset das válvulas ao by-pass de partida, menciona FV-39001A/B associadas às blow-off/antissurge do J-3901 e cita comportamentos próprios de XV-39001, XV-39808 e XV-39002. A condição de pressão citada para reset automático da XV-39002 é menor que 0,150 kg/cm²; todos esses critérios exigem validação no arranjo vigente.</p>
+<p><strong>Questão em aberto:</strong> o texto não comprova que uma função cujo by-pass já foi retirado volte a ser contornada automaticamente por nova queda de variável. Para ensinar o cenário, presume-se proteção restabelecida até confirmação da lógica atual.</p>
+<hr />
+<h2>3. By-pass de parada — HSBP39STOP</h2>
+<p><strong>Objetivo:</strong> promover parada programada controlada sem que reduções intencionais de carga, dispersão, temperatura, circulação de catalisador e vazão de ar provoquem automaticamente trips decorrentes da sequência esperada. A documentação ressalta: uma variável fora da sequência pode provocar trip mesmo com by-pass geral de parada ativo.</p>
+<h3>Sequência descrita operacionalmente</h3>
+<ol>
+<li><strong>Comando:</strong> HSBP39STOP na tela de intertravamento do conversor / GW315. A seção de projeto também usa a denominação HS_PARADA; verificar identificação em campo.</li>
+<li><strong>Permissivo:</strong> não pode haver condição de segurança no estado de by-pass de partida para aceitar o comando de parada.</li>
+<li><strong>Primeira liberação:</strong> são contornados FSLL-39005, baixa vazão de carga no ramal inferior, e a função de baixa vazão de vapor de dispersão (citada como FSLL-39044 no texto operacional).</li>
+<li><strong>Próxima etapa:</strong> após o ramal inferior cumprir sua condição de redução, o PLC contorna FSLL-39006, proteção de baixa vazão do ramal superior.</li>
+<li><strong>Redução do ramal superior:</strong> após cumprir a condição prevista, o PLC libera TSL-39010, baixa temperatura de reação, e o LSLL-39005 quando aplicável.</li>
+<li><strong>Redução térmica:</strong> com temperatura de reação inferior a 500 °C e o by-pass de temperatura efetivamente ativo, o histórico prevê contornar PDSLL-39018, PDSLL-39022 e FSLL-39003.</li>
+<li><strong>Redução do ar:</strong> abaixo da condição documentada de vazão de ar ao regenerador, o projeto prevê contorno associado à parada do J-3901.</li>
+<li><strong>Confirmação em tela:</strong> o texto operacional descreve sinalização amarela nas funções contornadas e texto &quot;parada&quot; na tela de by-pass. Comando aceito não substitui confirmação função a função.</li>
+</ol>
+<p><strong>Divergência:</strong> a seção operacional menciona 500 m³/d na transição entre ramais, enquanto a seção de engenharia utiliza 5% e 1.259 m³/d em trechos diferentes. Não usar esses valores como comando de redução sem confirmar a versão atual do PLC e o procedimento vigente.</p>
+<h3>Retirada do by-pass de parada e desistência da parada</h3>
+<p>O material descreve reset da condição de parada em resposta ao comando de by-pass de partida e mediante determinadas normalizações de processo. Alguns textos históricos citam retorno da carga acima de 1.259 ou de 1.637 m³/d por tempos especificados, vazão de ar acima de 3.500 m³/d, temperatura acima de 525 °C, níveis e pressões diferenciais. Há divergências entre as versões e funções citadas.</p>
+<p>Quando a operação desiste da parada, o descritivo operacional orienta transição para by-pass de partida <strong>antes</strong> do retorno às condições normais, a fim de evitar retirada inadequada do estado de parada com variáveis ainda em trip. Também menciona o comando de partida antes do rearme relacionado ao J-3901 após o término da parada.</p>
+<p>Esse registro deve ser interpretado como requisito histórico a confirmar. Ele não deve ser aplicado como instrução isolada, fora do procedimento vigente ou sem os permissivos de equipamento.</p>
+<h3>Por que o by-pass de parada não elimina todos os trips?</h3>
+<p>Ao ser acionado, o contorno começa pelas primeiras funções autorizadas. As demais dependem da progressão de variáveis do processo. Assim, reduzir prematuramente o ramal superior pode atingir o FSLL-39006 quando este ainda está protegido; reduzir a temperatura antes de liberar TSL-39010 também pode solicitar a proteção.</p>
+<p>Referência operacional adicional: PE.REF.OPE.CCF.106, etapa 5.2.1.9, registra explicitamente o acionamento e a sinalização das funções iniciais FSLL-39005 e FSLL-39044. O restante do procedimento trata das manobras de parada e não deve ser substituído pelo módulo.</p>
+<hr />
+<h2>4. By-pass de manutenção, BAD e votação</h2>
+<p>O by-pass de manutenção permite contornar individualmente instrumento que participa de uma função instrumentada de segurança, de acordo com autorização e gestão de desvio. O documento descreve liberação por chave física no PLC e necessidade de APR nível 2 e ADTCP. Como documentos internos e critérios podem mudar, a autorização, medidas compensatórias, prazo e retorno devem seguir o sistema vigente de gestão de segurança.</p>
+<h3>Sequência lógica e administrativa</h3>
+<ol>
+<li>Identificar o instrumento, a função instrumentada envolvida, a configuração de votação e a anomalia demonstrada.</li>
+<li>Avaliar consequências de perda ou degradação da camada de proteção e obter a autorização formal de desvio.</li>
+<li>Confirmar a seleção do instrumento e a configuração de contorno efetivamente implementada no PLC, com manutenção e operação.</li>
+<li>Confirmar o estado lógico sinalizado e a capacidade de proteção remanescente antes e durante a intervenção.</li>
+<li>Executar diagnóstico e correção pelos responsáveis, monitorando condições e prazo do desvio.</li>
+<li>Testar, retirar o contorno autorizado, verificar canais e votar novamente conforme a lógica implantada; confirmar encerramento formal do desvio.</li>
+</ol>
+<h3>Votação 2oo3: tabela-verdade conceitual</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Canal A</th>
+  <th>Canal B</th>
+  <th>Canal C</th>
+  <th>Trip 2oo3?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>0</td>
+  <td>0</td>
+  <td>Não</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0</td>
+  <td>0</td>
+  <td>Não</td>
+</tr>
+<tr>
+  <td>0</td>
+  <td>1</td>
+  <td>0</td>
+  <td>Não</td>
+</tr>
+<tr>
+  <td>0</td>
+  <td>0</td>
+  <td>1</td>
+  <td>Não</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>0</td>
+  <td>Sim</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0</td>
+  <td>1</td>
+  <td>Sim</td>
+</tr>
+<tr>
+  <td>0</td>
+  <td>1</td>
+  <td>1</td>
+  <td>Sim</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>1</td>
+  <td>1</td>
+  <td>Sim</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>0</strong> representa ausência de solicitação e <strong>1</strong> representa solicitação de trip, em um exercício abstrato, sem tratamento de BAD ou de temporização.</p>
+<h3>Falha do canal A e oscilação do C</h3>
+<p>Com A=1 por falha permanente, B=0 e C=0, a função 2oo3 ainda não atua, mas está degradada. Caso C passe a solicitar trip, A=1 e C=1 atingem a votação. Isso não prova que ambos representam desvio real de processo; o diagnóstico deve confrontar evidências independentes.</p>
+<h3>O que muda durante o contorno?</h3>
+<p><strong>Arquitetura ilustrativa 1:</strong> se o canal contornado for tratado como 0 e a lógica 2oo3 permanecer inalterada, os dois canais remanescentes precisam solicitar trip juntos. O efeito comportamental equivale a 2oo2 entre eles.</p>
+<p><strong>Arquitetura ilustrativa 2:</strong> se a aplicação reconfigurar explicitamente a votação para 1oo2, qualquer um dos dois canais remanescentes poderá solicitar a função, com efeitos diferentes em disponibilidade e trips indevidos.</p>
+<p><strong>Uma votação 2oo2</strong> também admite comportamentos distintos durante manutenção. Se um canal for fixado em condição normal sem reconfiguração, um canal isolado não atinge 2oo2; se houver reconfiguração para 1oo1, a função pode atuar por um canal, porém sem redundância.</p>
+<p><strong>Não inferir a votação degradada da U-39:</strong> o documento consultado não comprova qual das arquiteturas se aplica a cada função do PLC. A frase histórica sobre contornar primeiro o instrumento defeituoso não substitui procedimento autorizado, análise da configuração de votação e verificação independente.</p>
+<h3>Pontos forçados ≠ by-pass operacional</h3>
+<p>O histórico descreve pontos forçados no PLC para testes, simulações ou contingências de instrumentação. A sinalização no SDCD pode informar a quantidade de pontos fixados sem mostrar qual variável está forçada. Essa limitação de visibilidade exige rastreabilidade pela manutenção e pela documentação do desvio.</p>
+<hr />
+<h2>5. Aprofundamento das quatro situações críticas</h2>
+<p>Caso crítico 1 — Parada acionada, ramal superior reduzido fora de sequência</p>
+<p><strong>Condição inicial:</strong> ambos os ramais normais; by-pass de partida inativo; operador aciona HSBP39STOP; PLC aceita comando e contorna inicialmente FSLL-39005 e baixa vazão de dispersão. FSLL-39006, TSL-39010 e outras funções aguardam suas condições.</p>
+<p><strong>Desvio:</strong> o operador reduz primeiro o ramal superior sem confirmar liberação do seu FSLL. Se a vazão atingir o critério de intertravamento enquanto a proteção ainda estiver ativa, poderá ocorrer trip, com consequências previstas na matriz causa e efeito.</p>
+<p><strong>Raciocínio do CIC:</strong> separar comando geral aceito, funções sinalizadas em by-pass e funções ainda protegidas. Confirmar cada transição antes de considerar completa uma etapa; observar tendências e interdependências.</p>
+<p><strong>Conclusão:</strong> o by-pass de parada funciona por liberação condicionada, não por supressão geral de trips.</p>
+<p>Caso crítico 2 — Partida solicitada com um instrumento BAD</p>
+<p><strong>BAD</strong> indica qualidade de sinal reconhecida como inválida ou falha. A variável real pode estar normal, mas a função configurada no PLC pode tratar BAD como condição de trip.</p>
+<p>O documento declara que BAD impede a aceitação do by-pass de partida, exigindo tratamento autorizado da falha. Pressionar reset, por si só, não elimina a causa da invalidez do sinal.</p>
+<p><strong>Outro permissivo:</strong> com conversor em trip, o histórico informa exigência de ausência de trip ativo no J-3901 para aceitar by-pass de partida e permitir resets. Não confundir a lógica do conversor com os resets próprios das máquinas.</p>
+<p><strong>Decisão de diagnóstico:</strong> confirmar origem do BAD, redundância disponível, impacto na função instrumentada, condição da máquina e autorização de manutenção, sem presumir que um contorno seja admissível.</p>
+<p>Caso crítico 3 — By-pass de partida retirado, variável volta a cair</p>
+<p>O exemplo didático usa FSLL-39005: o histórico cita condição abaixo de 1.259 m³/d por mais de 120 s e reset do by-pass quando o ramal inferior fica acima de 1.637 m³/d por mais de 30 s. Os valores representam funções documentais diferentes e não são parâmetros operacionais homologados.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Momento</th>
+  <th>Vazão ilustrativa</th>
+  <th>Estado lógico didático</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>A</td>
+  <td>0 m³/d</td>
+  <td>Partida; função elegível contornada</td>
+</tr>
+<tr>
+  <td>B</td>
+  <td>800 m³/d</td>
+  <td>Permanece contornada</td>
+</tr>
+<tr>
+  <td>C</td>
+  <td>1.400 m³/d</td>
+  <td>Não atingiu o critério histórico de reset</td>
+</tr>
+<tr>
+  <td>D</td>
+  <td>1.700 m³/d</td>
+  <td>Condição de normalização alcançada</td>
+</tr>
+<tr>
+  <td>E</td>
+  <td>1.700 m³/d por mais de 30 s</td>
+  <td>By-pass individual retirado</td>
+</tr>
+<tr>
+  <td>F</td>
+  <td>1.200 m³/d</td>
+  <td>Nova redução com proteção supostamente ativa</td>
+</tr>
+<tr>
+  <td>G</td>
+  <td>Condição de trip pelo tempo programado</td>
+  <td>Possível intertravamento</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Histerese:</strong> a diferença entre o critério de atuação e o de normalização ajuda a evitar alternância por pequenas oscilações próximas do limite; não impede um trip real. O PLC não deve ser interpretado como mantendo contorno permanente só porque a chave geral havia sido acionada.</p>
+<p><strong>Pendência:</strong> o documento não comprova a reentrada automática de contorno após a retirada individual. Necessária confirmação da lógica implantada.</p>
+<p>Caso crítico 4 — Manutenção 2oo3 e trip real em outro canal</p>
+<p>Um canal A indicando trip por defeito, combinado com B e C normais, não atinge 2oo3. Se C oscilar e atingir a condição de trip, A+C poderão completar a votação, mesmo que uma indicação seja defeituosa.</p>
+<p>Se o contorno substituir o canal A por 0 sem reconfiguração, restarão B e C e a atuação exigirá os dois, equivalente a 2oo2. Se a aplicação reconfigurar para 1oo2, um único remanescente solicitará trip. A diferença é importante para avaliar integridade e disponibilidade da proteção.</p>
+<p><strong>Risco de seleção inadequada:</strong> contornar um canal normal deixando o canal defeituoso votando pode manter uma condição degradada. Os resultados dependem estritamente da lógica implantada e devem ser tratados pela manutenção com autorização formal.</p>
+<p><strong>Retorno:</strong> somente após verificação funcional, retirada do contorno e confirmação do estado de votação e do encerramento do desvio.</p>
+<h3>Primeiro evento e encadeamento de consequências</h3>
+<p>O PLC registra o primeiro evento de intertravamento; outros sinais podem ocorrer depois por consequência do processo. Uma baixa pressão diferencial de catalisador pode preceder alteração de circulação, queda de temperatura de reação e outros alarmes. O <strong>primeiro sinal registrado não prova, isoladamente, a causa física fundamental</strong>; analisar sequência de eventos, tendências e estado dos elementos finais.</p>
+<p>O documento associa trips do conversor a ações sobre os potes de selagem da GV-3901 e os vapores do riser. A automação de vapor depende da seleção descrita para solenóide ou controlador. A conclusão deve partir da matriz causa e efeito, não de suposições sobre posição das válvulas.</p>
+<h3>Checklist diagnóstico do CIC</h3>
+<ol>
+<li>O comando geral foi aceito?</li>
+<li>Quais funções individuais estão efetivamente contornadas?</li>
+<li>Quais proteções continuam habilitadas e quais estão em trip?</li>
+<li>Há BAD, ponto forçado, desvio formal ou condição de máquina que impede reset?</li>
+<li>Quais efeitos foram registrados e quais estados finais precisam de confirmação?</li>
+</ol>
+<hr />
+<h2>6. Rastreabilidade, conflitos e limites do modelo</h2>
+<p>Fontes utilizadas: <strong>Intertravamento U39 maior.doc</strong> (descritivo histórico com seções de by-pass de partida/parada, engenharia de 2005); <strong>PE.REF.OPE.CCF.042 — Partida do J-3901</strong> (revisão 02, 26/09/2025); <strong>PE.REF.OPE.CCF.062 — Partida geral após manutenção</strong> (revisão 02 indicada no histórico, 24/03/2026); <strong>PE.REF.OPE.CCF.106 — Parada da U-39 para reparo no FO-39143 e CI-3907</strong> (revisão 01, 25/09/2025); <strong>tela 39GW0014</strong> e <strong>matriz 39GR0051</strong> conservadas no Intertravamento Concept.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>Ponto a validar</th>
+  <th>Fontes/valores disponíveis</th>
+  <th>Conduta técnica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Ramal inferior/superior na sequência de parada</td>
+  <td>500 m³/d no texto operacional; 5% em sequência de engenharia; 1.259 m³/d em seção de condições</td>
+  <td>Conferir critério programado, faixa e unidade; não escolher por aproximação.</td>
+</tr>
+<tr>
+  <td>Reset de carga da partida</td>
+  <td>1.637 m³/d no histórico; campo de rearme da 39GW0014 indica 3.000 m³/d</td>
+  <td>Separar reset de by-pass, rearme de trip e versão.</td>
+</tr>
+<tr>
+  <td>Reset do ramal superior</td>
+  <td>Texto histórico imprime &quot;abaixo de 1.637&quot;</td>
+  <td>Possível divergência de redação; não corrigir silenciosamente.</td>
+</tr>
+<tr>
+  <td>Vapor de dispersão</td>
+  <td>Histórico: 550 e 50 t/d; 39GW0014: referência a 75 t/d</td>
+  <td>Confirmar tag, tipo da função, temporização, unidade e revisão.</td>
+</tr>
+<tr>
+  <td>PDSLL-39018/022</td>
+  <td>Histórico de reset: 200 gf/cm²; menção de 20 g no campo trip em captura</td>
+  <td>Confrontar função, escala e método de medição.</td>
+</tr>
+<tr>
+  <td>LSLL-39005</td>
+  <td>Histórico menciona contorno; captura indica trip desabilitado à época</td>
+  <td>Verificar estado vigente e a política de habilitação.</td>
+</tr>
+<tr>
+  <td>Votação durante manutenção</td>
+  <td>Documento não comprova 2oo3→1oo2 ou 2oo3→2oo2 por função</td>
+  <td>Validar carta lógica e matriz vigente.</td>
+</tr>
+<tr>
+  <td>Reentrada automática em by-pass</td>
+  <td>Não demonstrada explicitamente após reset individual da partida</td>
+  <td>Confirmar lógica de estado, memória e permissivos no PLC.</td>
+</tr>
+<tr>
+  <td>Reset do estado de parada</td>
+  <td>Diferenças históricas entre condições listadas e tempos de normalização</td>
+  <td>Confrontar implementação e procedimentos atuais.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regra de apresentação:</strong> nenhuma divergência foi resolvida por inferência. Todos os números acima são <em>informações históricas para análise</em>, nunca setpoints autorizados de manobra.</p>
+<p>As simulações a seguir são fictícias, demonstram consequências possíveis e não constituem uma cópia executável do PLC. As respostas procuram privilegiar diagnóstico e proteção, e não a execução de contornos em planta. Avaliações de engenharia, instrumentação e operação devem validar este material antes de qualquer emprego institucional.</p>
+<hr />
+</div></section>
+<section data-panel="cic" hidden><div class="panel"><h2>Simulações CIC — cinco cenários, 20 decisões</h2>
+<p class="subtle">Treinamento mostra fundamentação após cada escolha. Avaliação apresenta o resultado e a revisão ao final. Alternativas mudam de posição ao reiniciar.</p>
+<div class="row"><label for="cenario-select"><strong>Escolha o cenário</strong></label><select id="cenario-select" class="btn" aria-label="Selecione um cenário"></select></div>
+<div class="row"><button class="mode active" type="button" data-mode="treinamento">Treinamento</button><button class="mode" type="button" data-mode="avaliacao">Avaliação</button><button class="btn" type="button" id="quiz-restart">Reiniciar e embaralhar</button></div>
+<div id="quiz-main"><h3 id="quiz-title"></h3><p id="quiz-meta" class="small"></p>
+<div class="card"><h3>Situação inicial</h3><p id="quiz-intro"></p><h3>Variáveis iniciais</h3><ul id="quiz-variables"></ul></div>
+<p id="quiz-step" aria-live="polite"></p><progress id="quiz-progress" max="4" value="0"></progress>
+<p id="quiz-prior" class="card" hidden></p>
+<div class="card"><p id="quiz-context"></p><h3 id="quiz-question"></h3><div id="quiz-options"></div>
+<div id="quiz-feedback" class="feedback" aria-live="polite" hidden></div>
+<div class="row"><button class="btn" id="quiz-next" type="button" disabled>Próxima decisão</button></div></div></div>
+<div id="quiz-results" hidden><div class="card"><h3>Resultado do cenário</h3><p id="result-count"></p><h3>Consequência global</h3><p id="result-overall"></p></div>
+<h3>Revisão detalhada</h3><div id="result-review"></div>
+<button class="btn" type="button" id="result-restart">Refazer cenário</button></div>
+</div></section>
+</main><footer><div class="container">Material de treinamento não validado para uso operacional. Fonte: conteúdo técnico histórico do Intertravamento U-39 e procedimentos citados na aba integral. Versão 0.4.3 — 2026.</div></footer>
+<script id="dados-cenarios" type="application/json">[{"id":1,"titulo":"Queda de vazão após normalização do by-pass de partida","sistema":"Conversor / HSBP-39001","dificuldade":"Avançado","competencias":"Estados de proteção, histerese, primeiro evento e recuperação","situacao":"A unidade está em processo de partida. O PLC aceitou a HSBP-39001. O ramal inferior aumentou sua vazão, atingiu a condição histórica de retirada de contorno e o FSLL-39005 voltou à proteção normal. O ramal superior continua em by-pass de partida. A temperatura de reação está em elevação, a circulação de catalisador está em estabelecimento e o J-3901 está em operação.","variaveis":["FSLL-39005: proteção restabelecida","FSLL-39006: by-pass de partida","Temperatura: em elevação","J-3901: em operação"],"decisoes":[{"id":"1.1","contexto":"O FSLL-39005 deixou de exibir by-pass e o FSLL-39006 permanece contornado. Os dois ramais participam da mesma partida, mas não têm estados de proteção iguais.","pergunta":"Como interpretar os estados individuais apresentados?","alternativas":[{"id":"A","texto":"Ambos permanecem contornados enquanto durar a partida."},{"id":"B","texto":"O inferior está protegido, e o superior segue contornado."},{"id":"C","texto":"O inferior só volta à proteção após normalizar o superior."}],"correta":"B","fundamentacao":"A retirada do contorno é individual: um ramal pode estar protegido enquanto o outro ainda permanece em by-pass de partida.","risco":"Confundir o comando geral com contorno permanente impede reconhecer um trip possível do ramal inferior."},{"id":"1.2","contexto":"O ramal inferior apresenta redução inesperada de vazão, aproximando-se da condição de baixa vazão, enquanto o superior ainda normaliza.","pergunta":"Qual verificação é mais relevante para o diagnóstico do CIC?","alternativas":[{"id":"A","texto":"Concentrar a análise no ramal superior ainda em partida."},{"id":"B","texto":"Aguardar a tendência térmica antes de avaliar a vazão."},{"id":"C","texto":"Confirmar vazão, qualidade da medição e proteção ativa."}],"correta":"C","fundamentacao":"Confirmação da variável, do instrumento e do estado efetivo da proteção permite avaliar risco de atuação sem presumir falha da lógica.","risco":"Atraso na identificação da perda de vazão pode consumir a temporização da proteção."},{"id":"1.3","contexto":"A condição de baixa vazão persiste pelo tempo programado. O PLC registra atuação associada ao FSLL-39005 e, na sequência, a temperatura de reação diminui.","pergunta":"Como interpretar a cronologia dos eventos?","alternativas":[{"id":"A","texto":"A baixa vazão pode ser iniciadora; a queda térmica, efeito."},{"id":"B","texto":"A baixa temperatura necessariamente iniciou o intertravamento."},{"id":"C","texto":"Os dois eventos devem ser tratados como causas simultâneas."}],"correta":"A","fundamentacao":"O primeiro evento registrado ajuda a localizar a proteção iniciadora; tendências anteriores e posteriores são necessárias para estabelecer causa física.","risco":"Classificar um efeito tardio como causa inicial prejudica o diagnóstico e a recuperação."},{"id":"1.4","contexto":"O conversor encontra-se em trip. Algumas variáveis e elementos finais ainda não retornaram à condição esperada.","pergunta":"Qual é a abordagem adequada para analisar a recuperação?","alternativas":[{"id":"A","texto":"Rearmar o que estiver disponível e acompanhar a reação."},{"id":"B","texto":"Confirmar causa, permissivos e recuperação autorizada."},{"id":"C","texto":"Acionar a partida novamente e investigar após a retomada."}],"correta":"B","fundamentacao":"Um reset não corrige necessariamente a causa. É preciso confirmar a condição segura e seguir o procedimento vigente.","risco":"Rearme precipitado pode mascarar o diagnóstico ou expor sistemas a nova atuação."}],"consequencia":"A interpretação incorreta do primeiro estado pode fazer o CIC acreditar que o ramal inferior continua contornado. Se a perda de vazão não for reconhecida, um intertravamento poderá ocorrer durante etapa sensível da partida. Uma recuperação sem causa esclarecida pode resultar em nova atuação."},{"id":2,"titulo":"Queda antecipada da temperatura durante by-pass de parada","sistema":"Conversor / HSBP39STOP","dificuldade":"Avançado","competencias":"Sequência condicionada, temperatura, causa e efeito, automações associadas","situacao":"A U-39 executa parada programada. O PLC aceitou HSBP39STOP, contornou o FSLL-39005 e o vapor de dispersão. Depois da redução do ramal inferior, o FSLL-39006 também entrou em contorno. Porém o ramal superior ainda não atingiu a condição prevista para liberar TSL-39010. A temperatura de reação começa a cair.","variaveis":["FSLL-39005: by-pass de parada","FSLL-39006: by-pass de parada","TSL-39010: proteção ativa","Temperatura: em redução"],"decisoes":[{"id":"2.1","contexto":"A tendência mostra temperatura de reação em redução, enquanto o ramal superior não cumpriu a condição que libera o contorno térmico.","pergunta":"Qual proteção merece atenção imediata?","alternativas":[{"id":"A","texto":"PDSLL-39018, pois sempre precede a proteção térmica."},{"id":"B","texto":"FSLL-39003, já liberado apenas pelo comando geral."},{"id":"C","texto":"TSL-39010, que ainda pode permanecer habilitado."}],"correta":"C","fundamentacao":"Na sequência histórica, a proteção de temperatura é contornada somente após o ramal superior atender a condição programada.","risco":"Desconsiderar o estado de TSL-39010 pode conduzir a uma condição de trip não esperada pelo operador."},{"id":"2.2","contexto":"A temperatura continua caindo e TSL-39010 permanece protegido. A condição para sua liberação ainda não foi satisfeita.","pergunta":"Qual posicionamento é mais coerente com a segurança?","alternativas":[{"id":"A","texto":"Interromper a progressão inadequada e investigar a queda."},{"id":"B","texto":"Manter a redução, pois o PLC contornará a temperatura."},{"id":"C","texto":"Solicitar contorno de manutenção para preservar a parada."}],"correta":"A","fundamentacao":"A avaliação deve priorizar a condição real e o estado da proteção antes de progredir; não presumir contorno automático.","risco":"A continuidade da sequência fora de seus pressupostos pode antecipar o intertravamento."},{"id":"2.3","contexto":"Considere que a temperatura atinge o limiar de proteção antes da liberação de seu by-pass. O PLC registra o evento.","pergunta":"Qual interpretação é adequada?","alternativas":[{"id":"A","texto":"Houve falha do by-pass geral, que deveria impedir trips."},{"id":"B","texto":"A função ainda ativa pode ter atuado coerentemente."},{"id":"C","texto":"A temperatura deveria ser contornada em qualquer redução."}],"correta":"B","fundamentacao":"O by-pass de parada é progressivo. A proteção de uma etapa futura pode continuar habilitada.","risco":"Tratar a atuação como falha do PLC, sem reconstruir a sequência, dificulta a investigação."},{"id":"2.4","contexto":"Após o evento, aparecem indicações relacionadas a potes de selagem da GV-3901 e vapores do riser.","pergunta":"O que deve ser confirmado na análise dos efeitos?","alternativas":[{"id":"A","texto":"Recuperar primeiro a temperatura e avaliar o resto depois."},{"id":"B","texto":"Considerar as automações concluídas pelo registro de trip."},{"id":"C","texto":"Confrontar matriz e estados finais realmente observados."}],"correta":"C","fundamentacao":"O documento cita respostas de potes de selagem e de vapores em trips do conversor. O estado de saída deve ser confirmado, nunca presumido.","risco":"Pressupor ação física apenas com base no evento pode ocultar falha de elemento final."}],"consequencia":"O by-pass geral de parada não é uma autorização ampla. Se a temperatura baixar antes da liberação de TSL-39010, poderá ocorrer trip. As consequências são avaliadas pela matriz causa e efeito do conversor e incluem sistemas associados."},{"id":3,"titulo":"Instrumentação em manutenção: função votada 2oo3","sistema":"PLC / votação 2 de 3 — caso conceitual","dificuldade":"Especialista","competencias":"Votação, falha permanente, contorno e retorno da função de proteção","situacao":"Uma função hipotética do conversor é representada por três canais independentes, A, B e C, em votação 2oo3. O canal A indica trip permanente e é suspeito de defeito; B e C estão normais. Enquanto a manutenção investiga, o canal C começa a oscilar. Uma solicitação de contorno precisa ser formalmente analisada.","variaveis":["Canal A: 1 (suspeita de defeito)","Canal B: 0 (normal)","Canal C: 0 (normal)","Votação: 1oo3 presente; 2oo3 requerida"],"decisoes":[{"id":"3.1","contexto":"A=1 por anomalia suspeita; B=0 e C=0. Não existe ainda votação 2oo3 atingida.","pergunta":"Qual é a interpretação inicial mais adequada?","alternativas":[{"id":"A","texto":"Não houve votação, mas há degradação da confiabilidade."},{"id":"B","texto":"A função está íntegra, pois dois instrumentos estão normais."},{"id":"C","texto":"O trip já ocorreu, pois existe uma solicitação no canal A."}],"correta":"A","fundamentacao":"Uma solicitação não atinge 2oo3, mas um canal anormal pode transformar a próxima indicação em voto decisivo.","risco":"Confundir ausência de trip com integridade total da função omite um estado degradado."},{"id":"3.2","contexto":"O canal C oscila e passa a indicar trip em alguns instantes; A continua solicitando trip.","pergunta":"O que a votação básica 2oo3 pode produzir?","alternativas":[{"id":"A","texto":"Nenhum trip, porque A já era defeituoso antes."},{"id":"B","texto":"Trip quando A e C solicitarem simultaneamente."},{"id":"C","texto":"Atuação apenas se o canal B também sair do normal."}],"correta":"B","fundamentacao":"Na votação 2oo3 conceitual, dois canais com valor 1 satisfazem a condição, mesmo se uma indicação for defeituosa.","risco":"Desconsiderar o canal defeituoso pode levar a surpresa com trip durante oscilação de um segundo canal."},{"id":"3.3","contexto":"A manutenção solicita contornar A. O desvio foi submetido à avaliação e a equipe precisa saber como a votação remanescente será interpretada.","pergunta":"O que determina a votação após o contorno de A?","alternativas":[{"id":"A","texto":"A votação permanece 2oo3 em qualquer arquitetura."},{"id":"B","texto":"A configuração muda sempre para 1oo2 automaticamente."},{"id":"C","texto":"Validar a implementação específica da lógica do PLC."}],"correta":"C","fundamentacao":"A arquitetura pode equivaler a 2oo2, reconfigurar para 1oo2 ou usar outro tratamento. Não extrapolar a partir da votação original.","risco":"Supor uma reconfiguração inexistente pode tornar errada a avaliação de proteção residual."},{"id":"3.4","contexto":"O instrumento A foi reparado e voltou a indicar valor coerente. A tela ainda sinaliza by-pass de manutenção da função.","pergunta":"O que caracteriza a conclusão correta do desvio?","alternativas":[{"id":"A","texto":"Verificar, retirar o contorno e confirmar a proteção."},{"id":"B","texto":"Manter o contorno até a próxima janela de manutenção."},{"id":"C","texto":"Encerrar ao estabilizar o sinal, sem verificar a votação."}],"correta":"A","fundamentacao":"O restabelecimento exige validação funcional e retirada formal do desvio, não apenas o retorno aparente do sinal.","risco":"Manter contorno inadvertido pode deixar camada de segurança degradada após manutenção."}],"consequencia":"Há dois riscos: trip indevido pela combinação de falha permanente e segunda indicação anormal, e perda de integridade de proteção por contorno inadequado. O resultado real depende da lógica de votação implantada no PLC."},{"id":4,"titulo":"Desistência de parada e transição para operação","sistema":"Conversor / HSBP39STOP ↔ HSBP-39001","dificuldade":"Especialista","competencias":"Transições de estados, reset, BAD, confirmação da proteção","situacao":"Uma parada programada foi iniciada com HSBP39STOP. A carga foi parcialmente reduzida; FSLL-39005 e FSLL-39006 estão em by-pass de parada; a temperatura e a circulação de catalisador encontram-se abaixo da condição usual. Por decisão de supervisão, a equipe avalia cancelar a parada e retornar à operação.","variaveis":["By-pass de parada: ativo","FSLL-39005/006: contornados","Temperatura: reduzida","Vazão de ar: em redução"],"decisoes":[{"id":"4.1","contexto":"O estado de parada está ativo e as variáveis do conversor apresentam condições transitórias. A supervisão decide interromper a parada.","pergunta":"O que deve ser esclarecido antes da recuperação?","alternativas":[{"id":"A","texto":"A carga deve recuperar primeiro, para eliminar os contornos."},{"id":"B","texto":"A transição de estados e permissivos precisa ser validada."},{"id":"C","texto":"O estado de parada pode permanecer até operação normal."}],"correta":"B","fundamentacao":"O documento histórico descreve a transição de by-pass de parada para partida, evitando exposição prematura de funções em trip.","risco":"Elevar variáveis sem compreender a transição pode retirar contornos antes de outras condições estarem regularizadas."},{"id":"4.2","contexto":"A vazão de um ramal começa a aumentar, enquanto temperatura e outras funções ainda se encontram fora das condições usuais.","pergunta":"Qual risco lógico a equipe deve considerar?","alternativas":[{"id":"A","texto":"Normalizar a vazão restabelece todas as demais funções."},{"id":"B","texto":"O ramal normalizado mantém todos os contornos de parada."},{"id":"C","texto":"A normalização parcial pode retirar proteções de parada."}],"correta":"C","fundamentacao":"O retorno de certas variáveis pode alterar o estado do by-pass de parada. Uma condição isolada não garante prontidão global.","risco":"Retirada antecipada de estado de parada pode expor outras variáveis às suas funções ativas."},{"id":"4.3","contexto":"Durante a avaliação, o CIC identifica instrumento de proteção em BAD. O comando de partida não é aceito.","pergunta":"O que melhor explica o impedimento histórico?","alternativas":[{"id":"A","texto":"O BAD pode impedir aceitação; exige diagnóstico autorizado."},{"id":"B","texto":"O PLC deve ignorar BAD após uma parada programada."},{"id":"C","texto":"BAD interfere apenas no desvio de manutenção, não na partida."}],"correta":"A","fundamentacao":"O descritivo histórico descreve BAD como impedimento para o by-pass de partida; um reset não substitui investigação da qualidade de sinal.","risco":"Tratar falha de qualidade como simples atraso de processo pode desconsiderar deficiência instrumental."},{"id":"4.4","contexto":"A anomalia foi tratada por equipe autorizada; o sistema volta a permitir a avaliação de recuperação. Ainda restam indicadores de contorno.","pergunta":"Qual confirmação deve encerrar a transição lógica?","alternativas":[{"id":"A","texto":"Confirmar variáveis principais, sem revisar contornos ativos."},{"id":"B","texto":"Verificar proteções, contornos, permissivos e elementos."},{"id":"C","texto":"Assumir normalização completa após comando aceito."}],"correta":"B","fundamentacao":"Um comando aceito não significa que todas as funções estejam protegidas ou os elementos finais estejam na posição segura.","risco":"Contornos esquecidos ou permissivos não checados deixam riscos residuais na recuperação."}],"consequencia":"A normalização de variáveis durante transição pode retirar o estado de parada quando outras funções permanecem em trip. O histórico prevê transição pela lógica de partida; sua execução prática deve seguir procedimento e permissivos vigentes."},{"id":5,"titulo":"Trip do conversor e sequência de efeitos associados","sistema":"Conversor / PDSLL-39022, GV-3901 e sistemas integrados","dificuldade":"Especialista","competencias":"Primeiro evento, causa física, registros e recuperação","situacao":"O conversor opera em condição estável. Aparece queda súbita de pressão diferencial associada ao catalisador regenerado e o PLC registra PDSLL-39022 como primeiro evento. Em seguida ocorrem alterações de circulação, temperatura de reação, vazão e sinais dos sistemas integrados.","variaveis":["PDSLL-39022: primeiro evento registrado","Conversor: condição de trip","Temperatura: tendência descendente","Outros alarmes: posteriores ao primeiro evento"],"decisoes":[{"id":"5.1","contexto":"O PLC registrou PDSLL-39022 como primeiro evento; ainda não foi confirmada a causa física da alteração de ΔP.","pergunta":"Como classificar tecnicamente esse primeiro registro?","alternativas":[{"id":"A","texto":"É confirmação de travamento mecânico da L-3902."},{"id":"B","texto":"É prova de reversão de fluxo no catalisador."},{"id":"C","texto":"É o evento registrado, não a causa física."}],"correta":"C","fundamentacao":"O primeiro evento aponta a solicitação inicial registrada. Para concluir mecanismo físico é preciso confrontar tendências, instrumentação e pressões do sistema.","risco":"Atribuir causa física apenas pelo tag pode levar a diagnóstico prematuro e incorreto."},{"id":"5.2","contexto":"O conversor entra em trip e o CIC observa indicações relativas aos potes de selagem da GV-3901 e vapores do riser.","pergunta":"Qual avaliação corresponde ao descritivo da U-39?","alternativas":[{"id":"A","texto":"Confrontar a resposta dos potes e vapores com a matriz."},{"id":"B","texto":"Aguardar obrigatoriamente o trip do J-3901 para isso ocorrer."},{"id":"C","texto":"Priorizar reset dos controladores antes das verificações."}],"correta":"A","fundamentacao":"O PLC envia sinal de trip do conversor ao SDCD; a lógica associada pode alterar potes e vapor, com comportamento condicionado à seleção.","risco":"Presumir atuação efetiva de uma válvula sem confirmação de seu estado final pode ocultar condição insegura."},{"id":"5.3","contexto":"O SDCD registra queda térmica, mudanças na vazão e ΔP e alarmes de grandes máquinas após o evento inicial.","pergunta":"Qual método é o mais confiável para separar causa e efeito?","alternativas":[{"id":"A","texto":"Escolher como causa o alarme de maior gravidade."},{"id":"B","texto":"Correlacionar eventos, tendências e elementos finais."},{"id":"C","texto":"Tratar todas as ocorrências como causas independentes."}],"correta":"B","fundamentacao":"A sequência temporal e as evidências físicas ajudam a distinguir causa iniciadora, propagação e efeito secundário.","risco":"Atribuir todos os alarmes a causas separadas impede reconhecer o encadeamento do evento."},{"id":"5.4","contexto":"O conversor está parado. Persistem estados de trip memorizados e elementos finais aguardam avaliação.","pergunta":"O que fundamenta uma recuperação operacional autorizada?","alternativas":[{"id":"A","texto":"Rearmar inicialmente cada elemento que aceitar comando."},{"id":"B","texto":"Usar by-pass de partida para apagar registros e seguir."},{"id":"C","texto":"Confirmar causa, proteção, permissivos e rearme."}],"correta":"C","fundamentacao":"A recuperação depende de diagnóstico e condições seguras; reset de primeiro evento e rearme de saídas não corrigem falhas por si.","risco":"Rearme sem análise da causa pode desencadear nova atuação e exposição desnecessária."}],"consequencia":"O primeiro evento aponta a função que iniciou o registro de proteção, mas não prova a causa física. Trips do conversor podem produzir efeitos nos potes da GV-3901, vapores do riser e equipamentos associados; a conclusão depende da matriz e do registro efetivo."}]</script>
+<script id="app-script">(() => {
+  'use strict';
+  // Aplicação educacional offline: sem rede, eval, DOM HTML dinâmico ou acesso ao computador.
+  const scenarioData = document.getElementById('dados-cenarios');
+  const scenes = JSON.parse(scenarioData.textContent);
+  const $ = (id) => document.getElementById(id);
+  const create = (tag, value, className) => {
+    const el = document.createElement(tag);
+    if (value !== undefined) el.textContent = String(value);
+    if (className) el.className = className;
+    return el;
+  };
+  const clear = (el) => { while (el.firstChild) el.removeChild(el.firstChild); };
+  const add = (parent, tag, text, cls) => { const el = create(tag,text,cls); parent.appendChild(el); return el; };
+
+  // Navegação entre conteúdos e simulações
+  const tabs = [...document.querySelectorAll('[data-tab]')];
+  function showTab(id) {
+    tabs.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === id)));
+    document.querySelectorAll('main > section[data-panel]').forEach((s) => {s.hidden=s.dataset.panel!==id;});
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  tabs.forEach((b) => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Fluxos didáticos; representam interpretações, não permissivos de planta.
+  const flows = {
+    partida: [
+      ['Solicitação','Comando geral recebido pelo SDCD; recebimento não é aceitação.'],
+      ['Verificação','Permissivos e qualidade de instrumentos avaliados; BAD pode impedir aceitação.'],
+      ['Seleção','Somente funções elegíveis em trip quando o comando é aceito podem ser contornadas.'],
+      ['Normalização','Cada função pode recuperar seu critério individual, sem depender das demais.'],
+      ['Proteção restabelecida','Confirmar estado real por função; o comando geral não garante contorno permanente.']
+    ],
+    parada: [
+      ['Solicitação','Solicitação de by-pass de parada; não representa contorno de todas as proteções.'],
+      ['Condições de etapa','O PLC verifica condições específicas de cada etapa da parada.'],
+      ['Liberações sequenciais','Somente as funções que cumprem os critérios previstos entram em contorno.'],
+      ['Proteções remanescentes','Funções ainda não liberadas continuam capazes de gerar trip.'],
+      ['Retirada / transição','Acompanhar o retorno ao estado protegido conforme regras validadas.']
+    ],
+    manutencao: [
+      ['Autorização','A intervenção exige autorização formal e condições de segurança definidas.'],
+      ['Seleção individual','Seleciona-se somente o canal/função especificamente autorizado.'],
+      ['Risco residual','Confirmar a arquitetura de votação e a proteção remanescente.'],
+      ['Teste e documentação','Registrar intervenção, testes e retirada de qualquer forçamento.'],
+      ['Restabelecimento','Verificar formalmente a saída do by-pass e a capacidade de proteção.']
+    ]
+  };
+  let flowType = 'partida';
+  function showFlow(type,step) {
+    flowType=type;
+    document.querySelectorAll('[data-flow]').forEach((b)=>b.classList.toggle('active',b.dataset.flow===type));
+    const list=$('fluxo-etapas'), detail=$('fluxo-detalhe');clear(list);
+    flows[type].forEach(([label,desc],idx)=>{
+      const b=add(list,'button',undefined);
+      b.type='button';b.setAttribute('aria-pressed',String(idx===step));
+      add(b,'strong',String(idx+1)+'. '+label);add(b,'small',idx===step?'Etapa selecionada':'Ver interpretação');
+      b.addEventListener('click',()=>showFlow(type,idx));
+    });
+    clear(detail);
+    add(detail,'h3',flows[type][step][0]);add(detail,'p',flows[type][step][1]);
+    add(detail,'p','Modelo exclusivamente didático: validar permissivos, temporizações, votação e estados de campo nos documentos vigentes.','small');
+  }
+  document.querySelectorAll('[data-flow]').forEach((b)=>b.addEventListener('click',()=>showFlow(b.dataset.flow,0)));
+  showFlow('partida',0);
+
+  // Avaliação: alternativas embaralhadas a cada reinício, nunca controlam sistemas físicos.
+  const sceneSelect=$('cenario-select');
+  scenes.forEach((s)=>{const opt=add(sceneSelect,'option',String(s.id)+'. '+s.titulo);opt.value=String(s.id);});
+  let mode='treinamento',state=null;
+  function shuffled(arr) {
+    const result=arr.slice();
+    for(let i=result.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];
+    }
+    return result;
+  }
+  function restart() {
+    const scene=scenes.find((s)=>String(s.id)===sceneSelect.value)||scenes[0];
+    state={scene,idx:0,answers:[],orders:scene.decisoes.map((d)=>shuffled(d.alternativas)),selected:null};
+    $('quiz-main').hidden=false;$('quiz-results').hidden=true;
+    renderQuestion();
+  }
+  function renderQuestion(){
+    const {scene,idx,answers,orders}=state, d=scene.decisoes[idx];
+    const first=idx===0;
+    $('quiz-title').textContent='Cenário '+scene.id+' — '+scene.titulo;
+    $('quiz-meta').textContent=scene.sistema+' | '+scene.competencias;
+    $('quiz-intro').textContent=scene.situacao;
+    const vars=$('quiz-variables');clear(vars);
+    scene.variaveis.forEach((line)=>add(vars,'li',line));
+    $('quiz-step').textContent='Decisão '+(idx+1)+' de '+scene.decisoes.length+' · '+(mode==='treinamento'?'Treinamento':'Avaliação');
+    $('quiz-progress').value=idx;$('quiz-progress').max=scene.decisoes.length;
+    $('quiz-context').textContent=d.contexto;
+    $('quiz-question').textContent=d.pergunta;
+    const prior=$('quiz-prior');
+    if(first) {prior.hidden=true;} else {
+      prior.hidden=false;
+      const last=scene.decisoes[idx-1],prev=answers[idx-1];
+      prior.textContent=prev===last.correta?'Decisão anterior: diagnóstico adequado registrado.':'Decisão anterior: interpretação inadequada. Risco didático acumulado: '+last.risco;
+    }
+    const choices=$('quiz-options');clear(choices);
+    state.selected=null;$('quiz-next').disabled=true;
+    $('quiz-feedback').hidden=true;
+    orders[idx].forEach((o,i)=>{
+      const b=add(choices,'button',String.fromCharCode(65+i)+') '+o.texto,'choice');b.type='button';
+      b.addEventListener('click',()=>{
+        if(state.selected!==null)return;
+        state.selected=o.id;state.answers.push(o.id);
+        choices.querySelectorAll('button').forEach((item)=>{item.disabled=true;item.classList.toggle('selected',item===b);});
+        const fb=$('quiz-feedback');clear(fb);
+        if(mode==='treinamento'){
+          const correct=o.id===d.correta;fb.classList.toggle('bad',!correct);
+          add(fb,'strong',correct?'Interpretação adequada':'Interpretação a revisar');
+          add(fb,'p',d.fundamentacao);
+          if(!correct)add(fb,'p','Risco possível: '+d.risco);
+          fb.hidden=false;
+        }
+        $('quiz-next').disabled=false;
+      });
+    });
+    $('quiz-next').textContent=idx===scene.decisoes.length-1?'Concluir cenário':'Próxima decisão';
+  }
+  function renderResult(){
+    $('quiz-main').hidden=true;$('quiz-results').hidden=false;
+    const {scene,answers}=state,total=scene.decisoes.length;
+    const hits=answers.filter((ans,i)=>ans===scene.decisoes[i].correta).length;
+    $('result-count').textContent=hits+' de '+total+' decisões com interpretação de referência';
+    $('result-overall').textContent=scene.consequencia;
+    const review=$('result-review');clear(review);
+    scene.decisoes.forEach((d,i)=>{
+      const block=add(review,'div',undefined,'review');
+      add(block,'h3','Decisão '+d.id+' — '+(answers[i]===d.correta?'adequada':'revisar'));
+      const chosen=d.alternativas.find((o)=>o.id===answers[i]);
+      const ideal=d.alternativas.find((o)=>o.id===d.correta);
+      add(block,'p','Sua escolha: '+(chosen?chosen.texto:'Sem resposta'));
+      add(block,'p','Referência: '+ideal.texto);
+      add(block,'p','Fundamentação: '+d.fundamentacao);
+      add(block,'p','Risco de interpretação inadequada: '+d.risco);
+    });
+  }
+  $('quiz-next').addEventListener('click',()=>{
+    if(state===null||state.selected===null)return;
+    if(state.idx===state.scene.decisoes.length-1)renderResult();
+    else {state.idx++;renderQuestion();}
+  });
+  $('quiz-restart').addEventListener('click',restart);
+  $('result-restart').addEventListener('click',restart);
+  sceneSelect.addEventListener('change',restart);
+  document.querySelectorAll('[data-mode]').forEach((b)=>b.addEventListener('click',()=>{
+    mode=b.dataset.mode;
+    document.querySelectorAll('[data-mode]').forEach((el)=>el.classList.toggle('active',el.dataset.mode===mode));
+    restart();
+  }));
+  restart();
+})();</script>
+</body></html>
