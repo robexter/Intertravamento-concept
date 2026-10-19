@@ -1,7 +1,7 @@
 {
-  "name": "Intertravamentos U-39 Concept — Protótipo Educacional",
-  "short_name": "U39 Concept",
-  "description": "Treinamento didático de intertravamentos do RFCC U-39. Não controla processo.",
+  "name": "Intertravamentos U-39 Concept ",
+  "short_name": "Intertravamento Concept",
+  "description": "Treinamento didático de intertravamentos do RFCC U-39.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
