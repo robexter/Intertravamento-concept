@@ -1,0 +1,34 @@
+CORRECAO DE INTEGRACAO — LABORATORIO GW0014 V2.3
+=================================================
+
+A V2.3 JA ESTA NO GITHUB DOS DOIS PROJETOS. O QUE FALTA:
+- Remover chamadas antigas do laboratorio no index.html.
+- Corrigir precache do service-worker.js: trocar V1 por V2.3.
+- Adicionar gw0014-referencia.png ao cache offline.
+- Isolar a exclusao de caches do Intertravamento Concept para nao excluir outros PWAs.
+
+COMO PREPARAR OS DOIS PACOTES:
+1. Extraia este ZIP para uma pasta no Windows.
+2. Abra PowerShell na pasta extraida.
+3. Execute: .\Corrigir-Integracao-GW0014-V2.3.ps1
+4. O programa baixa os arquivos ATUAIS dos repositorios publicos e produz:
+   Downloads\Correcao-Integracao-GW0014-V2.3\Intertravamento-concept\
+   Downloads\Correcao-Integracao-GW0014-V2.3\partida-Rampas\
+5. Em cada pasta ha apenas index.html e service-worker.js.
+6. Envie ESSES DOIS arquivos para a RAIZ do respectivo repositorio GitHub.
+   Eles substituem as duas versoes antigas. Nao misture arquivos entre repositorios.
+7. Feche e reabra o PWA, atualize o site, ou remova a instalacao antiga
+   e instale novamente, se a versao em cache nao se renovar.
+
+O SCRIPT NAO FAZ COMMIT NO GITHUB.
+O laboratorio V2.3 e a imagem GW0014 ja estao hospedados nos dois repositorios.
+
+VALIDACAO:
+- O index.html deve ter uma UNICA chamada para laboratorio-bypass-gw0014-v23-sequencia.js
+- O service-worker.js deve pre-cachear V2.3 e gw0014-referencia.png.
+- Em TRIP/rearme, abrir a logica GW0014.
+- Em by-pass de parada, ver HSBP39STOP e a sequencia didatica em cinco etapas.
+- A sequencia de parada usa APENAS a ORDEM historica; limites TRIP/rearme sao apenas GW0014.
+- A simulacao e didatica, nao conecta ao PLC/SDCD.
+
+Se surgir erro, nao publique pacotes parciais; envie a mensagem apresentada.
