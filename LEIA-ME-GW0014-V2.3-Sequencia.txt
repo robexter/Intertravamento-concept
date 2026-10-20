@@ -1,0 +1,45 @@
+U-39 — LABORATÓRIO GW0014 V2.3 — SEQUÊNCIA DE BY-PASS DE PARADA
+=================================================================
+
+NOVO
+- Duas abas: (1) TRIP/REARME — SOMENTE GW0014; (2) BY-PASS DE PARADA — apenas a ORDEM histórica.
+- HSBP39STOP simulado, estados de contorno didático, cinco agrupamentos sequenciais,
+  seleção da próxima etapa, confirmação manual da transição e histórico de eventos.
+- Não importa NENHUM limite ou temporização antigo do documento histórico para esta simulação.
+- Permite consultar qualquer grupo diretamente na aba de critérios GW0014.
+- LSLL-39005 aparece como TRIP DESABILITADO conforme imagem GW0014;
+  nunca fica sinalizada como proteção efetivamente habilitada.
+- 2oo3 para temperatura/ΔP foi mantido como premissa didática informada pelo operador;
+  o agrupamento de TRIP e rearme da tela não substitui validação da lógica instalada.
+
+FONTES
+- GW0014: TRIP, REARME, estados e limites representados na captura.
+- Intertravamento U39 maior.doc, seção 4.2: SOMENTE A ORDEM das entradas no by-pass de parada.
+  A correspondência do vapor é FSLL-39044 na GW0014. Não importar valores históricos.
+- O avanço da sequência é MANUAL dentro do exercício e não simula as condições
+  automáticas de ativação no PLC, porque a GW0014 não as detalha completamente.
+
+COMO INSTALAR
+1. EXTRAIA TODOS os arquivos deste ZIP para a mesma pasta no Windows.
+2. Examine primeiro o arquivo Previa-Laboratorio-Bypass-GW0014-V2.3-Sequencia.html no navegador.
+3. Execute Instalar-GW0014-V2.3-Sequencia-Nos-Dois-Concepts.ps1 no PowerShell.
+   O instalador baixa o index.html e service-worker.js atuais de cada repo PUBLICO
+   e prepara dois pacotes; NÃO escreve automaticamente no GitHub.
+4. Copie somente os arquivos da pasta correspondente a cada repo:
+   Downloads\Atualizacao-GW0014-V2.3-Sequencia\partida-Rampas
+   Downloads\Atualizacao-GW0014-V2.3-Sequencia\Intertravamento-concept
+5. Envie os quatro arquivos da pasta correta ao nivel RAIZ do repositório GitHub.
+6. Teste desktop, mobile, PWA e atualização do cache após a publicação.
+
+ARQUIVOS ESPERADOS EM CADA REPOSITÓRIO
+- index.html
+- service-worker.js
+- laboratorio-bypass-gw0014-v23-sequencia.js
+- gw0014-referencia.png
+
+OBSERVAÇÕES
+- Este pacote não inclui index.html do repositório porque o instalador sempre busca
+  a versão que estiver publicada no momento da execução, evitando substituir uma versão desatualizada.
+- NÃO usar este material como permissão real para contornar uma proteção, partir,
+  parar ou rearmar equipamentos. Necessária validação por engenharia e documentação vigente.
+- Em caso de erro ou ausência de conectividade com o GitHub, não publique arquivos parciais.
